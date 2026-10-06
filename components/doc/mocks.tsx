@@ -2,7 +2,7 @@ import type { CSSProperties, ReactNode } from 'react';
 import { glue } from './blocks';
 
 /** Columns that split a swatch row evenly: 6 → 3 + 3, 8 → 4 + 4, 9 → 5 + 4. */
-const evenCols = (n: number) => ({ '--cols': Math.ceil(n / Math.ceil(n / 5)) }) as CSSProperties;
+const evenCols = (n: number) => ({ '--cols': Math.ceil(n / Math.ceil(n / 5)), '--cols-sm': n % 3 === 0 || n % 2 === 1 ? 3 : 2 }) as CSSProperties;
 
 /*
  * Replicas of Circleback's components, built from the measured values.
@@ -56,7 +56,16 @@ export function MockRow({
       <div
         className="cb-row cb-m"
         data-hover={hover ? 'true' : undefined}
-        style={{ minHeight: height, borderRadius: radius, gap, margin: `0 -${bleed}px`, padding: `0 ${bleed}px` }}
+        style={{
+          minHeight: height,
+          borderRadius: radius,
+          gap,
+          margin: `0 -${bleed}px`,
+          padding: `0 ${bleed}px`,
+          // read by the narrow-canvas layout so wrapped actions align with the text
+          ['--row-gap' as string]: `${gap}px`,
+          ['--row-avatar' as string]: `${(check ? 16 + gap : 0) + avatar}px`,
+        }}
       >
         {check ? (
           <span
@@ -217,6 +226,8 @@ export function MockSearch({
   background = '#2a2a2a',
   borderBottom,
   width = 300,
+  fontSize,
+  color,
 }: {
   placeholder?: string;
   height?: number;
@@ -225,6 +236,10 @@ export function MockSearch({
   /** true draws today's 1px #313131 bottom border; a string sets it (the proposal uses the subtle 0.5px border). */
   borderBottom?: boolean | string;
   width?: number;
+  /** 13 (ui) by default; the command palette field is 15. */
+  fontSize?: number;
+  /** Placeholder color; the proposal uses text 3 (#6A6A6A). */
+  color?: string;
 }) {
   return (
     <div
@@ -236,6 +251,8 @@ export function MockSearch({
         borderBottom: typeof borderBottom === 'string' ? borderBottom : borderBottom ? '1px solid #313131' : undefined,
         width: '100%',
         maxWidth: width,
+        fontSize,
+        color,
       }}
     >
       <i />
@@ -279,6 +296,7 @@ export function MockChip({
   dashed,
   removable,
   background,
+  color,
 }: {
   children: ReactNode;
   height?: number;
@@ -289,13 +307,15 @@ export function MockChip({
   dashed?: boolean;
   removable?: boolean;
   background?: string;
+  /** Text color; an unselected tab uses text 2. */
+  color?: string;
 }) {
   return (
     <span
       className="cb-chip cb-m"
       data-filled={filled ? 'true' : undefined}
       data-dashed={dashed ? 'true' : undefined}
-      style={{ height, fontSize, background, border: border ?? (dashed ? '1px dashed #3e3e3e' : undefined) }}
+      style={{ height, fontSize, background, color, border: border ?? (dashed ? '1px dashed #3e3e3e' : undefined) }}
     >
       {children}
       {removable ? <span className="cb-x">×</span> : null}
@@ -370,7 +390,7 @@ export function MockSettingsRow({
       </div>
       {control === 'toggle' ? <span className="cb-toggle" /> : null}
       {control === 'button' ? (
-        <MockButton height={28} radius={8} variant="outline">
+        <MockButton radius={8} variant="outline">
           Connect
         </MockButton>
       ) : null}

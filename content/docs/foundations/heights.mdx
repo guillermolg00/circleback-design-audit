@@ -7,6 +7,8 @@ description: "Twelve control heights from 20 to 40px, and a proposal for four pl
 
 <Scale values={[20, 22, 24, 26, 28, 29, 30, 31, 32, 36, 37, 40]} />
 
+The count covers controls you click or type into, plus the shortcut keys and tooltip that label them. Checkboxes (12, 14, and 16px) and the 48px selection bar, a toolbar that holds other controls, are measured in the [Appendix](/docs/appendix) but left out of it.
+
 <Measures
   head={['Height', 'Where it appears']}
   rows={[
@@ -17,7 +19,7 @@ description: "Twelve control heights from 20 to 40px, and a proposal for four pl
     { label: '29px', values: ['People right-panel controls'], flags: ['bad'] },
     { label: '30px', values: ['Settings buttons (Export, Sign out, Delete account)'], flags: ['bad'] },
     { label: '31px', values: ['Sidebar items, New meeting, Filter, All / Mine tabs'], flags: ['bad'] },
-    { label: '32px', values: ['Primary button, transcript and shortcuts search fields'] },
+    { label: '32px', values: ['Primary button, transcript and shortcuts search fields, tooltip'] },
     { label: '36px', values: ['Menu items (right-click, “…”, Filter), Scroll to now button'] },
     { label: '37px', values: ['Sidebar trial button'], flags: ['bad'] },
     { label: '40px', values: ['⌘K items'], flags: ['bad'] },
@@ -56,5 +58,5 @@ description: "Twelve control heights from 20 to 40px, and a proposal for four pl
 </Story>
 
 <Finding>
-  <Rule>Every control fits one of four heights. If two controls share a bar (header, row, toolbar), they share a height. The sidebar goes from 31 to 32; tabs and Filter, from 31 to 28; Settings buttons, from 30 to 32; the trial button, from 37 to 32.</Rule>
+  <Rule>Every button, input, chip, tab, and single-line menu item fits one of four heights. The fixed exceptions are the checkbox (16), the shortcut key (20), and the command palette’s search field (40). If two controls share a bar (header, row, toolbar), they share a height. The sidebar goes from 31 to 32; tabs and Filter, from 31 to 28; Settings buttons, from 30 to 32; the trial button, from 37 to 32.</Rule>
 </Finding>

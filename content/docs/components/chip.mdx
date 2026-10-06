@@ -36,8 +36,8 @@ description: Three pill heights for date, person, and tab.
       <MockChip height={28} border="1px solid #3e3e3e">40m</MockChip>
       <MockChip height={28} dashed>+ Add tag</MockChip>
     </div>
-    <div style={{ display: 'flex', gap: 6, alignItems: 'center', flexWrap: 'wrap' }}>
-      <MockChip height={28} border="1px solid #3e3e3e">All</MockChip>
+    <div style={{ display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' }}>
+      <MockChip height={28} border="1px solid #3e3e3e" color="#909090">All</MockChip>
       <MockChip height={28} border="1px solid #3e3e3e" filled>Mine</MockChip>
       <span style={{ width: 12 }} />
       <MockChip height={28} border="1px solid #3e3e3e" filled removable>Assignee: Me</MockChip>
@@ -48,5 +48,5 @@ description: Three pill heights for date, person, and tab.
 </Story>
 
 <Finding>
-  <Rule>Chips and tabs share one component. Tabs drop from 31 to 28 to line up with Filter. Filters applied by a tab (like “Mine”) show up as removable chips, never hidden (see [Invisible filters](/docs/ux/filters)).</Rule>
+  <Rule>Chips and list tabs (All / Mine) share one component; the Notes / Transcript view tabs keep their underline on a subtle divider. Tabs drop from 31 to 28 to line up with Filter. Filters applied by a tab (like “Mine”) show up as removable chips, never hidden (see [Invisible filters](/docs/ux/filters)).</Rule>
 </Finding>

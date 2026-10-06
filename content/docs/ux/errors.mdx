@@ -35,7 +35,6 @@ description: Recording errors only offer to delete the meeting.
       hover
       actions={<>
         <MockButton height={28} radius={8} variant="outline">How to fix</MockButton>
-        <MockButton height={28} radius={8} variant="outline">Upload recording</MockButton>
         <MockButton height={28} radius={8} variant="ghost" padX={8}>⋯</MockButton>
       </>}
     />
@@ -66,9 +65,7 @@ description: Recording errors only offer to delete the meeting.
             <MockButton variant="primary" height={28} radius={8}>Upload a recording</MockButton>
             <MockButton variant="outline" height={28} radius={8}>How to admit Circleback</MockButton>
           </div>
-          <label style={{ display: 'flex', gap: 12, alignItems: 'center', fontSize: 12, color: '#909090' }}>
-            <MockCheckbox size={16} radius={4} on /> Remind the host 5 minutes before the next occurrence
-          </label>
+          <label style={{ display: 'flex', gap: 12, alignItems: 'flex-start', fontSize: 12, color: '#909090' }}><MockCheckbox size={16} radius={4} on /><span style={{ lineHeight: '16px' }}>Remind the host 5 minutes before the next occurrence</span></label>
         </div>
       </div>
     </MockCard>

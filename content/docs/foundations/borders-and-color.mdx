@@ -9,9 +9,9 @@ description: "Three widths and four border grays, and a proposal for two tokens.
   head={['Border', 'Where it appears']}
   rows={[
     { label: '0.5px #313131', values: ['Right-panel cards, Settings cards, Settings dividers, Ask bar (transparent)'] },
-    { label: '0.5px #3E3E3E', values: ['New meeting button, dividers in the first Calendar card'], flags: ['bad'] },
-    { label: '1px #3E3E3E', values: ['Every popover, sidebar promo card, Automations explainer card, selection bar'] },
-    { label: '1px #313131', values: ['Date and tag chips, All / Mine tabs, bottom border of the Notes / Transcript tabs'] },
+    { label: '0.5px #3E3E3E', values: ['New meeting and trial buttons, dividers in the first Calendar card'], flags: ['bad'] },
+    { label: '1px #3E3E3E', values: ['Every popover, sidebar promo card, Automations explainer card, selection bar, Settings buttons, shortcuts panel keys'] },
+    { label: '1px #313131', values: ['Date and tag chips, All / Mine tabs, bottom border of the Notes / Transcript tabs'], flags: ['bad'] },
     { label: '1px #4B4B4B', values: ['Meetings checkbox, selection bar dividers'], flags: ['bad'] },
     { label: '1px #6A6A6A', values: ['Action items round checkbox'], flags: ['bad'] },
     { label: '1.5px #4B4B4B', values: ['Share dialog checkbox'], flags: ['bad'] },
@@ -33,7 +33,7 @@ description: "Three widths and four border grays, and a proposal for two tokens.
     items={[
       { hex: '#313131', label: 'subtle · 0.5px · surfaces and dividers' },
       { hex: '#3E3E3E', label: 'strong · 1px · controls' },
-      { hex: '#4B4B4B', label: '→ strong', drop: true },
+      { hex: '#4B4B4B', label: '→ strong (checkbox) · subtle (dividers)', drop: true },
       { hex: '#6A6A6A', label: '→ strong', drop: true },
     ]}
   />

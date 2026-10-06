@@ -1,11 +1,11 @@
 ---
 title: List row
-description: Avatar, title, and meta at the same height in every list, but the hover bleeds differently and the checkboxes change.
+description: Avatar, title, and meta at the same height in Meetings, People, Companies, and Home, but the hover bleeds differently and the checkboxes change.
 ---
 
 ## Current
 
-Row hover has the same height (58px) and radius (12px) in every list, but **how far it bleeds** past the content column changes: 34px on the left and 32 on the right in Meetings, 8px in People and Companies, and 8 and 40px in Home. Switching between lists, the column “jumps.”
+Row hover has the same height (58px, up to 60 in Meetings) and radius (12px) in Meetings, People, Companies, and Home, but **how far it bleeds** past the content column changes: 34px on the left and 32 on the right in Meetings, 8px in People and Companies, and 8 and 40px in Home. Switching between lists, the column “jumps.”
 
 <Figure eager src="/img/f02-meetings-row.jpg" alt="Row hover in Meetings bleeding 34 and 32px" width={572} height={160} caption={<><b>Meetings:</b> the hover bleeds 34 / 32px.</>} />
 
@@ -36,7 +36,7 @@ Row hover has the same height (58px) and radius (12px) in every list, but **how 
 
 ## Proposal
 
-<Story title="List row" kind="proposed" note="56px for two lines, 36px for one. The hover bleeds 8px per side with radius 12 in every list. A 32px avatar sits 12px from the text, with 0px between title and meta.">
+<Story title="List row" kind="proposed" note="56px for two lines, 36px for one. The hover bleeds 8px per side with radius 12 in every list. A 32px avatar (20px next to a task checkbox) sits 12px from the text, with 0px between title and meta.">
   <div className="cb-m" style={{ display: 'grid', gap: 4, padding: '4px 8px' }}>
     <MockRow title="Weekly sync" meta="Ali Haghani and you" right="Wed" height={56} bleed={8} gap={12} hover />
     <MockRow title="Customer call" meta="2 participants" right="Tue" height={56} bleed={8} gap={12} />

@@ -6,7 +6,7 @@ const sections = [
     href: '/docs',
     icon: BookOpen,
     title: 'Overview and method',
-    text: 'What was measured, how, and the five conclusions that matter.',
+    text: 'What was measured, how, and what matters most.',
   },
   {
     href: '/docs/foundations/scale',
@@ -36,7 +36,7 @@ const sections = [
     href: '/docs/appendix',
     icon: Table,
     title: 'Appendix',
-    text: 'Every measured value, screen by screen.',
+    text: 'The main measured values, screen by screen, plus controls and overlays.',
   },
 ];
 

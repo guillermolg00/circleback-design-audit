@@ -1,11 +1,11 @@
 ---
 title: Sidebar
-description: The most consistent component in the app, with three exceptions.
+description: The most consistent component in the app, with four exceptions.
 ---
 
 ## Current
 
-Items are 31px with radius 7, 2px apart, with groups 16px apart. The exceptions are the New meeting button (31px with radius 10), the trial button (37px), and the icons, which mix 14, 15, 16, and 17px.
+Items are 31px with radius 7, 2px apart, with groups 16px apart. The exceptions are the New meeting button (31px with radius 10), the trial button (37px), the promo card (1px #3E3E3E border), and the icons, which mix 14, 15, 16, and 17px.
 
 <Figure eager
   src="/img/f09-sidebar.jpg"
@@ -32,7 +32,7 @@ Items are 31px with radius 7, 2px apart, with groups 16px apart. The exceptions 
 ## Proposal
 
 <Story title="Sidebar" kind="proposed" note="32px items with radius 8, 16px icons, 13/500 text in text 2. New meeting is an md secondary button. The trial is an md ghost button. One upsell surface at a time.">
-  <div className="cb-m" style={{ width: 228, margin: '0 auto', display: 'grid', gap: 2, padding: 12, background: '#1f1f1f', borderRadius: 12 }}>
+  <div className="cb-m" style={{ width: 228, margin: '0 auto', display: 'grid', gap: 2, padding: 12, background: '#1d1d1d', borderRadius: 12 }}>
     <MockButton variant="outline" radius={8}>+ New meeting</MockButton>
     <div style={{ height: 12 }} />
     {['Home', 'Meetings', 'Action items', 'Automations', 'Insights', 'Ask'].map((label, i) => (
@@ -41,7 +41,7 @@ Items are 31px with radius 7, 2px apart, with groups 16px apart. The exceptions 
       </div>
     ))}
     <div style={{ height: 12 }} />
-    <div style={{ fontSize: 12, fontWeight: 500, lineHeight: '24px', color: '#6a6a6a', padding: '0 8px' }}>Contacts</div>
+    <div style={{ fontSize: 12, fontWeight: 450, lineHeight: '16px', color: '#6a6a6a', padding: '4px 8px' }}>Contacts</div>
     {['People', 'Companies'].map((label) => (
       <div key={label} className="cb-mi" style={{ height: 32, borderRadius: 8, padding: '0 8px', gap: 8, fontWeight: 500, color: '#909090' }}>
         <i /> {label}
