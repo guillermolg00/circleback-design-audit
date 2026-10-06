@@ -11,6 +11,14 @@ pnpm dev
 
 Open http://localhost:3000. The documentation lives under `/docs`.
 
+## Password
+
+The whole site sits behind a password (`proxy.ts`): pages, screenshots, search, `llms.txt` and OG images. Only `/unlock` and the brand assets are public, and every response carries `X-Robots-Tag: noindex`.
+
+- Set `SITE_PASSWORD` in `.env.local` for local work (see `.env.example`) and in your host for deploys, e.g. `vercel env add SITE_PASSWORD production`.
+- Without `SITE_PASSWORD` the site fails closed (503).
+- Unlocking stores an HMAC of the password in an HttpOnly cookie for 30 days. Changing the password signs everyone out.
+
 ## Structure
 
 - `content/docs/` — MDX pages: Overview, Method, Foundations, Components, User experience, Proposal and Appendix. Each folder has a `meta.json` with the page order.

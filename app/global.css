@@ -1411,3 +1411,88 @@ h2,
   background: rgba(242, 78, 29, 0.32);
   color: #fff;
 }
+
+/* ───────── password gate ───────── */
+
+.cb-unlock {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  padding: 48px 16px;
+}
+
+.cb-unlock-card {
+  display: grid;
+  gap: 16px;
+  width: 100%;
+  max-width: 360px;
+}
+
+.cb-unlock-mark {
+  display: block;
+  width: auto;
+  height: 32px;
+  margin-bottom: 8px;
+}
+
+.cb-unlock-card .cb-eyebrow {
+  margin: 0;
+}
+
+.cb-unlock-card h1 {
+  margin: 0;
+  font-size: 28px;
+  line-height: 36px;
+  color: #ededed;
+  text-wrap: balance;
+}
+
+.cb-unlock-text {
+  margin: -8px 0 8px;
+  font-size: 15px;
+  line-height: 22px;
+  color: var(--cb-text-2);
+}
+
+.cb-unlock-field {
+  display: grid;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--cb-text);
+}
+
+.cb-unlock-field input {
+  height: 36px;
+  padding: 0 12px;
+  border-radius: 8px;
+  border: 1px solid var(--cb-border-strong);
+  background: var(--cb-input);
+  color: #ededed;
+  font: 400 15px var(--font-system);
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.cb-unlock-field input:focus-visible {
+  border-color: var(--cb-brand);
+  box-shadow: 0 0 0 3px var(--cb-brand-soft);
+}
+
+.cb-unlock-field input[aria-invalid='true'] {
+  border-color: var(--cb-bad);
+}
+
+.cb-unlock-error {
+  margin: -4px 0 0;
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--cb-bad);
+}
+
+.cb-unlock-card .cb-home-btn {
+  justify-content: center;
+  margin-top: 8px;
+  cursor: pointer;
+  font-family: var(--font-system);
+}

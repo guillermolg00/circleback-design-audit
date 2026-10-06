@@ -17,6 +17,8 @@ export const metadata: Metadata = {
   },
   description:
     'A visual consistency and user experience audit of the Circleback web app, measured live and documented as a design system.',
+  // private: password-protected and kept out of search engines
+  robots: { index: false, follow: false },
 };
 
 export default function Layout({ children }: LayoutProps<'/'>) {
