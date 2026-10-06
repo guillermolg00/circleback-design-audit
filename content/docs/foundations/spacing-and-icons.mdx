@@ -1,0 +1,64 @@
+---
+title: "Spacing and icons"
+description: "Ten gaps and nine icon sizes, and a proposal for a 4px grid and four icon sizes."
+---
+
+## Spacing
+
+### Current
+
+<Scale values={[1.5, 2, 3.5, 4, 6, 8, 10, 12, 16, 24]} />
+
+- The **1.5 and 3.5px** gaps live in the sidebar (3.5 between the workspace icon and text); the items themselves are 2px apart.
+- A **10px** gap separates the checkbox from the text in action items; in every other row, the avatar sits 8px away.
+- Settings row paddings are **11px 19px**, off the 4px grid. In Tags they become 16px 19px.
+- Spacing between blocks varies too: from title to content there are 12, 16, 17, 29, and 27px depending on the page (see [Page header](/docs/components/page-header)).
+
+### Proposal
+
+<Story title="Spacing grid" kind="proposed" note="Multiples of 4 starting at 4, plus a 2 for fine adjustments. 40 separates Settings sections and sets an empty state below the header; 64 is reserved for horizontal page padding.">
+  <SpacingBars values={[2, 4, 8, 12, 16, 24, 32, 40, 64]} />
+</Story>
+
+<Measures
+  head={['Relationship', 'Current', 'Proposed']}
+  rows={[
+    { label: 'Page title → first block', values: ['12 · 16 · 17 · 29 · 27', '16'], flags: ['bad', 'good'] },
+    { label: 'Avatar → text', values: ['8', '12'] },
+    { label: 'Checkbox → text', values: ['10', '12'], flags: ['bad', 'good'] },
+    { label: 'Icon → text in menus', values: ['8 · 10 · 20', '8'], flags: ['bad', 'good'] },
+    { label: 'Between sidebar items', values: ['2', '2'] },
+    { label: 'Between Home groups', values: ['28', '24'] },
+    { label: 'Between Settings sections', values: ['43', '40'], flags: ['bad', 'good'] },
+    { label: 'Settings row padding', values: ['11 / 19', 'centered / 20'], flags: ['bad', 'good'] },
+  ]}
+/>
+
+## Icons
+
+### Current
+
+Four sizes coexist in the sidebar alone. Across the app there are nine.
+
+<Figure eager
+  src="/img/f09-sidebar.jpg"
+  alt="Sidebar with 14, 15, 16, and 17px icons marked"
+  width={349}
+  height={700}
+  fit
+  caption={<>Sidebar icons: pink marks the ones that aren’t 16px. The three sidebar controls are also visible: New meeting at 31px with radius 10, items at 31px with radius 7, and the 37px trial button.</>}
+/>
+
+<Story title="Icon sizes in use" kind="current" note="Solid sizes stay; dotted sizes go away.">
+  <IconSizes sizes={[9, 10, 11, 12, 14, 15, 16, 17, 18]} keep={[12, 14, 16]} />
+</Story>
+
+### Proposal
+
+<Story title="Icon tokens" kind="proposed">
+  <IconSizes sizes={[12, 14, 16, 20]} keep={[12, 14, 16, 20]} />
+</Story>
+
+<Finding>
+  <Rule>12 for icons inside meta and chips, 14 for inline icons in rows, 16 for menus, sidebar, and buttons, 20 for empty states and headers. An icon is exported at its final size, never scaled.</Rule>
+</Finding>

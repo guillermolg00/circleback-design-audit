@@ -1,0 +1,50 @@
+---
+title: Page header
+description: Title, tabs, and Filter, with a gap to the content that changes from page to page.
+---
+
+## Current
+
+Visually, Meetings and People are almost aligned (16 and 17px), though they are built differently underneath: one uses tabs, the other a 48px block that centers the Filter. The outliers are **Home (29px)**, **Settings (27px)**, and the **meeting detail (12px)**. On top of that, the header is 30px without a button and 32px with a primary button, so the Filter sits 2px lower in Action Items than in Meetings.
+
+<Figure eager src="/img/f01-meetings-header.jpg" alt="Meetings page header: 16px between title and tabs" width={572} height={146} caption={<><b>Meetings:</b> 16px to the tabs.</>} />
+<Figure src="/img/f01-people-header.jpg" alt="People page header: 17px between title and Filter" width={572} height={112} caption={<><b>People:</b> 17px to the Filter, no tabs.</>} />
+<Figure src="/img/f01-home-header.jpg" alt="Home page header: 29px between title and the first group" width={572} height={112} caption={<><b>Home:</b> 29px to the first group.</>} />
+
+## Measurements
+
+<Measures
+  head={['Page', 'Title → first block', 'Header height', 'Horizontal padding']}
+  rows={[
+    { label: 'Meetings', values: ['16px (tabs)', '30', '64'] },
+    { label: 'Action Items', values: ['16px (tabs)', '32 (with button)', '64'], flags: [undefined, 'bad'] },
+    { label: 'Automations · Insights', values: ['16px (card)', '32 (with button)', '64'] },
+    { label: 'People · Companies', values: ['17px (Filter)', '30', '64'] },
+    { label: 'Home', values: ['29px', '30', '64'], flags: ['bad'] },
+    { label: 'Meeting detail', values: ['12px (chips)', '32', '64'], flags: ['bad'] },
+    { label: 'Settings', values: ['27px (label)', '30', '40'], flags: ['bad', undefined, 'bad'] },
+  ]}
+/>
+
+## Proposal
+
+<Story title="Page header" kind="proposed" note="The header row is always 32px, with or without a button. The first block (tabs, Filter, chips, or list) starts 16px below it on every page.">
+  <div className="cb-m" style={{ display: 'grid', gap: 16 }}>
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 32 }}>
+      <span className="cb-display" style={{ fontSize: 24, lineHeight: '32px', color: '#cacaca' }}>Action Items</span>
+      <MockButton variant="primary" radius={8}>+ New action item</MockButton>
+    </div>
+    <div style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
+      <MockChip height={28} border="1px solid #3e3e3e">All</MockChip>
+      <MockChip height={28} border="1px solid #3e3e3e" filled>Mine</MockChip>
+      <MockChip height={28} dashed>+</MockChip>
+      <span style={{ flex: 1 }} />
+      <MockButton variant="ghost" height={28} radius={8}>Filter</MockButton>
+      <MockButton variant="ghost" height={28} radius={8}>Display</MockButton>
+    </div>
+  </div>
+</Story>
+
+<Finding>
+  <Rule>Title at 24/32 in the display font, a fixed 32px header row, 16px to the first block, and 64px horizontal padding, Settings included. Tabs and the Filter share the same row and the same height (28px).</Rule>
+</Finding>

@@ -1,0 +1,36 @@
+---
+title: Invisible filters
+description: Tabs apply filters you can’t see, and there are no display options.
+---
+
+<Sev level="medium" />
+
+<Finding>
+  <What>
+    The “Mine” tab in Action Items applies Assignee and Status under the hood. The Filter menu shows a “1” on each, but the list has no chips to indicate it, and completed items disappear without a hint. The default tab is “All” in Meetings and “Mine” in Action Items. There are no display options either (group, sort, show completed).
+  </What>
+  <Linear>
+    Active filters appear as chips in the bar, removable one by one, and Display options controls grouping, sorting, and which properties to show.
+  </Linear>
+  <Proposal>
+    Visible, removable filter chips, including the ones a tab applies, and a Display menu with group, sort, and show completed. The same default tab in every list.
+  </Proposal>
+</Finding>
+
+<Figure eager src="/img/u07-hidden-filters.jpg" alt="Filter menu with Assignee and Status active and no sign of them in the list" width={572} height={345} caption="Two active filters that don’t show in the list." />
+
+## Proposal
+
+<Story title="Visible filter bar" kind="proposed" note="The “Mine” tab shows its filters as removable chips. Display controls grouping, sorting, and showing completed items.">
+  <div className="cb-m" style={{ display: 'flex', gap: 6, alignItems: 'center', flexWrap: 'wrap' }}>
+    <MockChip height={28} border="1px solid #3e3e3e">All</MockChip>
+    <MockChip height={28} border="1px solid #3e3e3e" filled>Mine</MockChip>
+    <span style={{ width: 12 }} />
+    <MockChip height={28} border="1px solid #3e3e3e" filled removable>Assignee: Me</MockChip>
+    <MockChip height={28} border="1px solid #3e3e3e" filled removable>Status: Open</MockChip>
+    <MockChip height={28} dashed>+ Filter</MockChip>
+    <span style={{ flex: 1 }} />
+    <MockButton variant="ghost" height={28} radius={8}>Group: Meeting</MockButton>
+    <MockButton variant="ghost" height={28} radius={8}>Display</MockButton>
+  </div>
+</Story>

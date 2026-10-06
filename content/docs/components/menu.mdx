@@ -1,0 +1,77 @@
+---
+title: Menu and popover
+description: Five popovers that share radius and border, but not item height or padding.
+---
+
+## Current
+
+The popovers (the “…” menu, right-click, account, Filter, New meeting) use radius 6 and a 1px #3E3E3E border. Even so, item height and container padding change from one to the next. Palettes and dialogs belong to a different family, documented in [Command palette and dialogs](/docs/components/palette-and-dialogs).
+
+<Compare>
+  <Figure eager src="/img/f03-menu-context.jpg" alt="Context menu with 36px items" width={322} height={192} fit caption={<><b>Right-click:</b> 36px items, padding 4.</>} />
+  <Figure src="/img/f03-menu-filter.jpg" alt="Filter menu with no padding and a search field with a bottom border" width={500} height={195} fit caption={<><b>Filter:</b> no padding and a search field in a different style.</>} />
+  <Figure src="/img/f03-menu-newmeeting.jpg" alt="New meeting menu with 58px items" width={429} height={285} fit caption={<><b>New meeting:</b> 58px items with a description and 4px between them.</>} />
+  <Figure src="/img/f03-menu-account.jpg" alt="Account menu with 31px items" width={384} height={438} fit caption={<><b>Account menu:</b> 31px items, padding 4px 0.</>} />
+</Compare>
+
+## Measurements
+
+<Measures
+  head={['Overlay', 'Container', 'Item', 'Icon → text']}
+  rows={[
+    { label: '“…” menu and right-click', values: ['r6 · padding 4 · 1px #3E3E3E', '36px · r6', '8px'] },
+    { label: 'Account menu', values: ['r6 · padding 4px 0', '31px · r6', '8px'], flags: ['bad', 'bad'] },
+    { label: 'Filter', values: ['r6 · padding 0', '36px · r6', '–'], flags: ['bad'] },
+    { label: 'New meeting', values: ['r6 · padding 4', '58px · r6 · 4px between items', '20px'], flags: [undefined, 'bad', 'bad'] },
+    { label: '⌘K (palette)', values: ['r15 · no border · background at 80%', '40px · r7', '10px'], flags: ['bad', 'bad', 'bad'] },
+  ]}
+/>
+
+<Story title="Menu items in use" kind="current" note="The same menu item is 31, 36, 40, or 58px tall depending on where it opens.">
+  <div className="cb-m" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 260px), 1fr))', gap: 16, alignItems: 'start', justifyItems: 'start' }}>
+    <MockMenu width={150} itemHeight={31} pad="4px 0" items={[{ label: 'Settings', active: true }, { label: 'Support' }, { label: 'Keyboard shortcuts' }]} />
+    <MockMenu width={150} itemHeight={36} items={[{ label: 'Share', active: true }, { label: 'Tags' }, { label: 'Automations' }, { label: 'Delete', danger: true }]} />
+    <MockMenu width={200} itemHeight={40} itemRadius={7} radius={15} border="none" iconGap={10} items={[{ label: 'Settings › Account', active: true }, { label: 'Settings › Preferences' }]} />
+    <MockMenu width={230} itemHeight={58} iconGap={20} items={[{ label: 'Invite Circleback', sub: 'Add Circleback to a live meeting', active: true }, { label: 'Import', sub: 'Upload an audio or video file' }]} />
+  </div>
+</Story>
+
+## Proposal
+
+<Story title="Popover" kind="proposed" note="Radius 12, padding 4, 0.5px subtle border plus shadow. A 32px item with radius 8, a 16px icon 8px from the text, and the shortcut on the right. An item with a description is 48px.">
+  <div className="cb-m" style={{ display: 'flex', gap: 16, flexWrap: 'wrap', alignItems: 'flex-start' }}>
+    <MockMenu
+      width={240}
+      radius={12}
+      itemHeight={32}
+      itemRadius={8}
+      border="0.5px solid #313131"
+      items={[
+        { label: 'Share', kbd: ['S'], active: true },
+        { label: 'Add tag', kbd: ['T'] },
+        { label: 'Automations' },
+        { sep: true, label: '' },
+        { label: 'Copy link', kbd: ['⇧', '⌘', 'C'] },
+        { label: 'Rename', kbd: ['R'] },
+        { sep: true, label: '-' },
+        { label: 'Delete', kbd: ['⌘', '⌫'], danger: true },
+      ]}
+    />
+    <MockMenu
+      width={260}
+      radius={12}
+      itemHeight={48}
+      itemRadius={8}
+      border="0.5px solid #313131"
+      items={[
+        { label: 'Invite Circleback', sub: 'Add Circleback to a live meeting', active: true },
+        { label: 'Import', sub: 'Upload an audio or video file' },
+        { label: 'Record on desktop', sub: 'Download the desktop app' },
+      ]}
+    />
+  </div>
+</Story>
+
+<Finding>
+  <Rule>Every popover shares the same container (md, padding 4, subtle border) and the same item (32px, sm, 16px icon 8px from the text). The account menu drops its 4px 0 vertical padding; Filter gains padding 4; New meeting goes from 58 to 48 and brings the icon closer to the text. Each item shows its shortcut if it has one.</Rule>
+</Finding>

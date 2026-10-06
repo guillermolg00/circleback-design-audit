@@ -1,0 +1,21 @@
+{
+  "title": "Components",
+  "icon": "Component",
+  "defaultOpen": true,
+  "pages": [
+    "page-header",
+    "list-row",
+    "checkbox",
+    "menu",
+    "palette-and-dialogs",
+    "shortcut-key",
+    "search-field",
+    "button",
+    "chip",
+    "card",
+    "sidebar",
+    "empty-state",
+    "settings",
+    "notes-and-transcript"
+  ]
+}

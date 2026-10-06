@@ -1,13 +1,41 @@
 ---
-title: Hello World
-description: Your first document
+title: Overview
+description: An audit of visual consistency and user experience in the Circleback web app, measured live and documented as a design system.
+icon: BookOpen
 ---
 
-Welcome to the docs! You can start writing documents in `/content/docs`.
+Circleback already has a solid foundation: restrained interface type (12–15px), cards with a 12px radius and a 0.5px border, a very regular sidebar, and patterns borrowed from Linear, such as ⌘K, a shortcuts panel, multi-select, and a well-organized Settings. What’s missing is **closing the system**: too many values coexist for the same thing, and the same component is built differently from screen to screen.
 
-## What is Next?
+<Stats
+  items={[
+    ['8', 'radii', '4–16px, plus pill'],
+    ['12', 'control heights', '20–40px'],
+    ['9', 'icon sizes', '9–18px'],
+    ['5', 'font weights', '450–700'],
+    ['4', 'border grays', 'in 3 widths'],
+  ]}
+/>
+
+## What matters most
+
+- **Errors are dead ends.** In the meetings list, 5 of 8 visible rows are errors whose only action is *Delete*. A failed meeting’s page is left empty. → [Dead-end errors](/docs/ux/errors)
+- **The same object has three different menus.** The “…” menu, the right-click menu, and the shared version offer different actions, and use “Delete” or “Remove” for the same action. → [Menus per object](/docs/ux/menus)
+- **Menus don’t share measurements:** items of 31, 36, 40, and 58px, radii of 6 and 15px, three key styles, and four search field styles. → [Menu and popover](/docs/components/menu)
+- **List rows are built differently:** the hover bleeds 34px in Meetings and 8px in People and Companies. Checkboxes come in three versions. → [List row](/docs/components/list-row)
+- **Settings has two templates** and, within Calendar, the two cards use different heights, text sizes, and dividers. → [Settings](/docs/components/settings)
+- **The proposal** reduces the system to 5 radii, 4 control heights, 2 borders, 3 text grays, and 4 icon sizes, defines one rule per component, and orders 15 changes into three stages. → [Tokens](/docs/proposal/tokens) · [Roadmap](/docs/proposal/roadmap)
+
+## How to read this documentation
+
+It’s organized as a design system, not as a linear report.
 
 <Cards>
-  <Card title="Learn more about Next.js" href="https://nextjs.org/docs" />
-  <Card title="Learn more about Fumadocs" href="https://fumadocs.dev" />
+  <Card title="Foundations" href="/docs/foundations/scale" description="The real scale of radii, heights, typography, borders, icons, and spacing, plus the proposed scale." />
+  <Card title="Components" href="/docs/components/page-header" description="Each component as a story: current state with screenshots, measurements, a live replica of the proposal, and a rule." />
+  <Card title="User experience" href="/docs/ux" description="Ten findings with priority, evidence, a Linear reference, and a proposal." />
+  <Card title="Proposal" href="/docs/proposal/tokens" description="Tokens, component rules, and roadmap." />
 </Cards>
+
+<Callout type="info" title="What the canvases mean">
+  Dark canvases marked **current** are replicas built from the values measured in the app. Those marked **proposed** use the values from [Tokens](/docs/proposal/tokens). Click any screenshot to enlarge it.
+</Callout>

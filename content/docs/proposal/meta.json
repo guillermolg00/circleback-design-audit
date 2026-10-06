@@ -1,0 +1,6 @@
+{
+  "title": "Proposal",
+  "icon": "Sparkles",
+  "defaultOpen": true,
+  "pages": ["tokens", "rules", "roadmap"]
+}

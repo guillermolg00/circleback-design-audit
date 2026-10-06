@@ -1,0 +1,119 @@
+---
+title: Tokens
+description: The whole system on one page, ready to move into the theme.
+---
+
+Almost everything proposed already exists somewhere in Circleback. The work is choosing one version and applying it everywhere. Each [Foundations](/docs/foundations/scale) page explains the why; this page collects the values.
+
+## Radius
+
+<RadiusSwatches
+  items={[
+    { r: 4, label: 'xs · checkbox, key' },
+    { r: 8, label: 'sm · button, input, menu item' },
+    { r: 12, label: 'md · card, popover, row hover' },
+    { r: 16, label: 'lg · ⌘K, dialogs, Ask bar' },
+    { r: 999, label: 'full · chip, tab, avatar' },
+  ]}
+/>
+
+## Control height
+
+<HeightSwatches
+  items={[
+    { h: 24, label: 'xs · person chip', radius: 8 },
+    { h: 28, label: 'sm · chips, tabs, Filter, sm button', radius: 8 },
+    { h: 32, label: 'md · buttons, inputs, sidebar items, popover items', radius: 8 },
+    { h: 36, label: 'lg · palette item', radius: 8 },
+  ]}
+/>
+
+List rows: 36px for one line, 56px for two. Popover item with a description: 48px. Settings row: 56px.
+
+## Typography
+
+<TypeSamples
+  items={[
+    { token: 'display 24/32 700', size: 24, lh: 32, weight: 700, text: 'Meetings', family: 'display' },
+    { token: 'subtitle 18/24 600', size: 18, lh: 24, weight: 600, text: 'Nothing here yet' },
+    { token: 'section 15/22 600', size: 15, lh: 22, weight: 600, text: 'Overview' },
+    { token: 'doc 15/24 450', size: 15, lh: 24, weight: 450, text: 'Notes and transcript text.' },
+    { token: 'row 14/20 500', size: 14, lh: 20, weight: 500, text: 'Row title' },
+    { token: 'ui 13/20 450–500', size: 13, lh: 20, weight: 450, text: 'Menus, sidebar, and buttons' },
+    { token: 'meta 12/16 450', size: 12, lh: 16, weight: 450, text: 'Wed · 40m · 2 participants', color: '#909090' },
+    { token: 'kbd 11/1 500 mono', size: 11, lh: 11, weight: 500, text: '⌘ K', family: 'mono' },
+  ]}
+/>
+
+## Color
+
+<ColorDots
+  items={[
+    { hex: '#1A1A1A', label: 'bg' },
+    { hex: '#1D1D1D', label: 'panel' },
+    { hex: '#232323', label: 'raised' },
+    { hex: '#2A2A2A', label: 'hover · input' },
+    { hex: '#313131', label: 'border subtle (0.5px)' },
+    { hex: '#3E3E3E', label: 'border strong (1px)' },
+    { hex: '#CACACA', label: 'text 1' },
+    { hex: '#909090', label: 'text 2' },
+    { hex: '#6A6A6A', label: 'text 3' },
+    { hex: '#4262FF', label: 'accent' },
+    { hex: '#EB584B', label: 'danger' },
+    { hex: '#31CC46', label: 'success' },
+  ]}
+/>
+
+## Spacing and icons
+
+<SpacingBars values={[2, 4, 8, 12, 16, 24, 32, 40, 64]} />
+
+Icons: 12, 14, 16, and 20px.
+
+## As variables
+
+```css
+:root {
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 999px;
+
+  --control-xs: 24px;
+  --control-sm: 28px;
+  --control-md: 32px;
+  --control-lg: 36px;
+  --row-sm: 36px;
+  --row-md: 56px;
+
+  --border-subtle: 0.5px solid #313131;
+  --border-strong: 1px solid #3e3e3e;
+
+  --bg: #1a1a1a;
+  --panel: #1d1d1d;
+  --raised: #232323;
+  --hover: #2a2a2a;
+  --text-1: #cacaca;
+  --text-2: #909090;
+  --text-3: #6a6a6a;
+  --accent: #4262ff;
+  --danger: #eb584b;
+  --success: #31cc46;
+
+  --space-1: 2px;
+  --space-2: 4px;
+  --space-3: 8px;
+  --space-4: 12px;
+  --space-5: 16px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 40px;
+  --space-9: 64px;
+
+  --icon-xs: 12px;
+  --icon-sm: 14px;
+  --icon-md: 16px;
+  --icon-lg: 20px;
+}
+```

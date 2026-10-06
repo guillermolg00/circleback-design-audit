@@ -1,0 +1,57 @@
+---
+title: Notes and transcript
+description: The same 15px text with two line heights, and a bullet rhythm that weakens grouping.
+---
+
+## Current
+
+Generated notes are consistent with each other: every section heading uses 15px and weight 600, including “Action Items”. The exception is “Private notes”, which uses the same size in gray #909090. What stands out is that the same 15px text gets a 22.5 line height in Notes and 30 in Transcript.
+
+<Figure eager src="/img/f06-notes-rhythm.jpg" alt="Notes: 15px between heading and text, 22px between bullets" width={572} height={226} caption={<><b>Notes:</b> 15px from heading to text and 22px between bullets. Bullets sit farther from each other than from the heading that groups them.</>} />
+
+<Figure eager src="/img/f07-transcript.jpg" alt="Transcript with 15px text and a 30px line height" width={572} height={330} caption={<><b>Transcript:</b> 15px text with a line height of 30 (2.0), name at 14/22.75, 4px from name to text, and 18px between turns.</>} />
+
+<Measures
+  head={['Element', 'Notes', 'Transcript']}
+  rows={[
+    { label: 'Text', values: ['15 / 22.5 · 450', '15 / 30 · 450'], flags: [undefined, 'bad'] },
+    { label: 'Section heading', values: ['15 / 22.5 · 600', '–'] },
+    { label: 'Speaker name', values: ['–', '14 / 22.75 · 500'], flags: [undefined, 'bad'] },
+    { label: 'Timestamp', values: ['–', '12 / 19.5 · 450 · #6A6A6A'] },
+    { label: 'Heading → text', values: ['15px', '4px (name → text)'] },
+    { label: 'Between bullets / turns', values: ['22px', '18px'] },
+    { label: 'Between sections', values: ['32px', '–'] },
+  ]}
+/>
+
+## Proposal
+
+<Story title="Document" kind="proposed" note="15/24 in Notes and Transcript. Heading 15/600, 8px from heading to text, 12px between bullets, 32px between sections. In the transcript, name 13/500 with the timestamp on the right and 4px to the text.">
+  <div className="cb-m" style={{ display: 'grid', gap: 32, maxWidth: 560 }}>
+    <div>
+      <div style={{ fontSize: 15, fontWeight: 600, lineHeight: '22px', color: '#cacaca', marginBottom: 8 }}>Overview</div>
+      <ul style={{ margin: 0, paddingLeft: 20, display: 'grid', gap: 12, fontSize: 15, lineHeight: '24px' }}>
+        <li>The team agreed to ship the new onboarding flow before the end of the quarter.</li>
+        <li>Open question about pricing for teams under ten seats; follow up next week.</li>
+      </ul>
+    </div>
+    <div style={{ display: 'grid', gap: 18 }}>
+      <div>
+        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13, fontWeight: 500, lineHeight: '20px', marginBottom: 4 }}>
+          <span>Ali Haghani</span><span style={{ color: '#6a6a6a', fontWeight: 450, fontSize: 12 }}>0:05</span>
+        </div>
+        <div style={{ fontSize: 15, lineHeight: '24px' }}>Thanks for making time with the time zone difference too.</div>
+      </div>
+      <div>
+        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13, fontWeight: 500, lineHeight: '20px', marginBottom: 4 }}>
+          <span>Guillermo López</span><span style={{ color: '#6a6a6a', fontWeight: 450, fontSize: 12 }}>0:09</span>
+        </div>
+        <div style={{ fontSize: 15, lineHeight: '24px' }}>No problem at all. Yesterday was a long day, but all good.</div>
+      </div>
+    </div>
+  </div>
+</Story>
+
+<Finding>
+  <Rule>Notes and transcript are the same document with two views: they share the `doc 15/24` style. The heading sits closer to its content (8px) than bullets sit to each other (12px), and much closer than to the next section (32px). “Private notes” uses the same heading as the other sections.</Rule>
+</Finding>

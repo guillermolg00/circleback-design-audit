@@ -1,0 +1,47 @@
+---
+title: Command palette and dialogs
+description: ⌘K, the shortcuts panel, and the Share dialog use radius 15 and share nothing with the popovers.
+---
+
+## Current
+
+<Figure eager
+  src="/img/f03-menu-cmdk.jpg"
+  alt="Command palette with radius 15, 40px items, and a 24px Tab key"
+  width={718}
+  height={430}
+  caption={<><b>⌘K:</b> radius 15, no border, background at 80%, 40px items with radius 7, and a 24px key with a #313131 background.</>}
+/>
+
+<Measures
+  head={['Overlay', 'Container', 'Item or row', 'Search field']}
+  rows={[
+    { label: '⌘K', values: ['672px · r15 · no border', '40px · r7 · icon 10px from text', '40px, no background, separator below'] },
+    { label: 'Shortcuts panel', values: ['448px · r15 · no border · padding 16px 0 0', '36px, 4px between rows', '32px · r7 · #313131 background'] },
+    { label: 'Share dialog', values: ['448px · r15 · no border · padding 16 16 0', '22, 25, 28, 34, and 36px controls', '34px · r6'], flags: [undefined, 'bad'] },
+  ]}
+/>
+
+<Figure src="/img/f04-kbd-panel.jpg" alt="Shortcuts panel with radius 15 and a 32px search field" width={460} height={440} fit caption={<><b>Shortcuts panel:</b> radius 15, 36px rows, search field with a #313131 background.</>} />
+<Figure src="/img/u03-cmdk-share.jpg" alt="Command palette searching for share" width={745} height={118} caption={<>The ⌘K search field is 40px with no background; the shortcuts panel’s is 32px with one.</>} />
+
+## Proposal
+
+<Story title="Command palette" kind="proposed" note="Radius 16, 0.5px subtle border, a 40px search field with no background and a separator, and 36px items with radius 8 and the icon 8px from the text. Sections get an 11px label.">
+  <div className="cb-m" style={{ borderRadius: 16, border: '0.5px solid #313131', background: '#1d1d1d', maxWidth: 560, boxShadow: '0 16px 40px rgba(0,0,0,.45)' }}>
+    <div style={{ display: 'flex', alignItems: 'center', gap: 12, height: 40, padding: '0 14px', borderBottom: '0.5px solid #313131', fontSize: 15, color: '#6a6a6a' }}>
+      <span style={{ flex: 1, minWidth: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>Search or ask a question…</span>
+      <span style={{ display: 'flex', gap: 6, alignItems: 'center', fontSize: 12 }}>Ask Circleback <Kbd>Tab</Kbd></span>
+    </div>
+    <div style={{ padding: 6 }}>
+      <Label>This meeting</Label>
+      <MockMenu width="100%" radius={0} pad={0} border="none" itemHeight={36} itemRadius={8} items={[{ label: 'Share this meeting', kbd: ['S'], active: true }, { label: 'Add tag', kbd: ['T'] }, { label: 'Copy link', kbd: ['⇧', '⌘', 'C'] }]} />
+      <Label>Go to</Label>
+      <MockMenu width="100%" radius={0} pad={0} border="none" itemHeight={36} itemRadius={8} items={[{ label: 'Meetings', kbd: ['G', 'M'] }, { label: 'Action items', kbd: ['G', 'A'] }]} />
+    </div>
+  </div>
+</Story>
+
+<Finding>
+  <Rule>Palettes and dialogs use **lg** (16) with a subtle border, never 15 and never borderless. Inside, the items are the same as in a popover but 36px tall. A palette’s search field is 40px with no background; a side panel’s is 32px with one (see [Search field](/docs/components/search-field)).</Rule>
+</Finding>

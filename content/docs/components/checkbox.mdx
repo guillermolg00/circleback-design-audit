@@ -1,0 +1,42 @@
+---
+title: Checkbox
+description: Three different checkboxes for selecting, completing, and accepting.
+---
+
+## Current
+
+<Figure eager src="/img/f08-meetings-checkbox.jpg" alt="14px square checkbox in Meetings" width={572} height={88} caption={<>Selection in Meetings: <b>14px square</b>, radius 4, #4B4B4B border.</>} />
+
+<Figure eager src="/img/f08-actionitems-row.jpg" alt="16px circular checkbox in Action Items" width={572} height={118} caption={<>Completion in Action Items: <b>16px circle</b>, #6A6A6A border.</>} />
+
+<Measures
+  head={['Use', 'Shape', 'Size', 'Border']}
+  rows={[
+    { label: 'Select rows (Meetings)', values: ['Square, r4', '14px', '1px #4B4B4B'] },
+    { label: 'Complete (action items)', values: ['Circle', '16px', '1px #6A6A6A'] },
+    { label: 'Accept (Share dialog)', values: ['Square, r4', '12px', '1.5px #4B4B4B'], flags: [undefined, 'bad', 'bad'] },
+  ]}
+/>
+
+<Story title="Checkboxes in use" kind="current">
+  <div className="cb-m" style={{ display: 'flex', gap: 28, alignItems: 'center', flexWrap: 'wrap' }}>
+    <span style={{ display: 'inline-flex', gap: 10, alignItems: 'center', fontSize: 13 }}><MockCheckbox size={14} radius={4} border="1px solid #4b4b4b" /> Meetings</span>
+    <span style={{ display: 'inline-flex', gap: 10, alignItems: 'center', fontSize: 13 }}><MockCheckbox size={16} radius={999} border="1px solid #6a6a6a" /> Action items</span>
+    <span style={{ display: 'inline-flex', gap: 10, alignItems: 'center', fontSize: 13 }}><MockCheckbox size={12} radius={4} border="1.5px solid #4b4b4b" /> Share</span>
+  </div>
+</Story>
+
+## Proposal
+
+<Story title="Checkbox" kind="proposed" note="A single 16px component with a 1px strong border. The shape carries the meaning: square to select, circle to complete a task. The checked state uses the accent.">
+  <div className="cb-m" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(112px, max-content))', gap: '16px 28px', alignItems: 'center' }}>
+    <span style={{ display: 'inline-flex', gap: 12, alignItems: 'center', fontSize: 13 }}><MockCheckbox size={16} radius={4} /> Select</span>
+    <span style={{ display: 'inline-flex', gap: 12, alignItems: 'center', fontSize: 13 }}><MockCheckbox size={16} radius={4} on /> Selected</span>
+    <span style={{ display: 'inline-flex', gap: 12, alignItems: 'center', fontSize: 13 }}><MockCheckbox size={16} radius={999} /> Pending</span>
+    <span style={{ display: 'inline-flex', gap: 12, alignItems: 'center', fontSize: 13 }}><MockCheckbox size={16} radius={999} on /> Completed</span>
+  </div>
+</Story>
+
+<Finding>
+  <Rule>16px, 1px strong border (#3E3E3E), xs radius for selection and full radius for tasks. Drop #4B4B4B, #6A6A6A, and the 1.5px border width. The selection checkbox appears on hover and stays visible while anything is selected.</Rule>
+</Finding>

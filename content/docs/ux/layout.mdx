@@ -1,0 +1,34 @@
+---
+title: Layout at medium widths
+description: The right panel doesn’t collapse and the player disappears.
+---
+
+<Sev level="medium" />
+
+<Finding>
+  <What>
+    At around 1070px, the right panel (288px) stays open and the notes column shrinks to 349px: action items get cut off after a few words. The video player appears next to the transcript at 1408px, but at around 1070px it drops out of view.
+  </What>
+  <Linear>
+    The details panel hides with a toggle and collapses on its own below a certain width. The main content always keeps a readable minimum.
+  </Linear>
+  <Proposal>
+    Collapse the right panel below about 1200px (the `]` shortcut already exists) and move the player into a fixed bar above the transcript at medium widths. Set a 560px minimum for the document column.
+  </Proposal>
+</Finding>
+
+<Figure eager src="/img/u09-responsive.jpg" alt="Meeting at 1068px with a 349px notes column and a 288px right panel" width={799} height={598} caption="At 1068px: notes at 349px, right panel at 288px." />
+
+<Figure src="/img/u10-player.jpg" alt="At 1408px the player appears next to the transcript" width={670} height={320} caption="At 1408px the player does appear." />
+
+## Proposed breakpoints
+
+<Measures
+  head={['Width', 'Sidebar', 'Document', 'Right panel', 'Player']}
+  rows={[
+    { label: 'Over 1400px', values: ['228px', 'up to 760px', '288px open', 'own column'] },
+    { label: '1200 – 1400px', values: ['228px', 'min 560px', '288px open', 'fixed bar above the transcript'] },
+    { label: '960 – 1200px', values: ['228px', 'min 560px', 'collapsed, opens with ]', 'fixed bar'] },
+    { label: 'Under 960px', values: ['collapsed to icons', 'full width', 'collapsed', 'fixed bar'] },
+  ]}
+/>

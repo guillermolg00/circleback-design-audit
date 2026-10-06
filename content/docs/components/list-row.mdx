@@ -1,0 +1,49 @@
+---
+title: List row
+description: Avatar, title, and meta at the same height in every list, but the hover bleeds differently and the checkboxes change.
+---
+
+## Current
+
+Row hover has the same height (58px) and radius (12px) in every list, but **how far it bleeds** past the content column changes: 34px on the left and 32 on the right in Meetings, 8px in People and Companies, and 8 and 40px in Home. Switching between lists, the column “jumps.”
+
+<Figure eager src="/img/f02-meetings-row.jpg" alt="Row hover in Meetings bleeding 34 and 32px" width={572} height={160} caption={<><b>Meetings:</b> the hover bleeds 34 / 32px.</>} />
+
+<Figure src="/img/f02-people-row.jpg" alt="Row hover in People bleeding 8px" width={572} height={175} caption={<><b>People:</b> the hover bleeds 8px per side.</>} />
+
+<Story title="Row hover" kind="current" note="The dashed lines mark the content column. Top: Meetings. Bottom: People.">
+  <div className="cb-m" style={{ display: 'grid', gap: 28, padding: '8px 40px' }}>
+    <MockRow title="Weekly sync" meta="Ali Haghani and you" right="Wed" hover bleed={34} guides />
+    <MockRow title="Ali Haghani" meta="ali@example.com" right="Wed" hover bleed={8} guides />
+  </div>
+</Story>
+
+## Measurements
+
+<Measures
+  head={['List', 'Height', 'Gap', 'Bleed', 'Checkbox', 'Title / meta']}
+  rows={[
+    { label: 'Meetings', values: ['58–60', '0', '34 / 32', 'Square 14px, r4, #4B4B4B', '14/20 · 12/16, 1px between lines'], flags: [undefined, undefined, 'bad'] },
+    { label: 'People · Companies', values: ['52 (58 hover)', '6–8', '8 / 8', '–', '14/20 · 12/16, 0px'] },
+    { label: 'Home', values: ['52 (58 hover)', '59', '8 / 40', '–', '14/20 · 12/16, 0px'], flags: [undefined, undefined, 'bad'] },
+    { label: 'Action Items (page)', values: ['26', '8', '0', 'Circle 16px, #6A6A6A', '14/17.5'], flags: ['bad'] },
+    { label: 'Action item (in meeting)', values: ['54', '0', '12', 'Circle 16px', '14/17.5 · 12/19.5, padding 8/12/6'], flags: [undefined, undefined, undefined, undefined, 'bad'] },
+  ]}
+/>
+
+<Figure src="/img/f08-actionitems-row.jpg" alt="26px rows with a circular checkbox in Action Items" width={572} height={118} caption={<><b>Action Items:</b> 26px rows with 8px gaps and a 16px circular checkbox.</>} />
+<Figure src="/img/f05-detail-controls.jpg" alt="Action items inside the meeting with 24 and 28px chips" width={572} height={272} caption={<>The same action item inside the meeting is 54px tall, with asymmetric 8/12/6 padding.</>} />
+
+## Proposal
+
+<Story title="List row" kind="proposed" note="56px for two lines, 36px for one. The hover bleeds 8px per side with radius 12 in every list. A 32px avatar sits 12px from the text, with 0px between title and meta.">
+  <div className="cb-m" style={{ display: 'grid', gap: 4, padding: '4px 8px' }}>
+    <MockRow title="Weekly sync" meta="Ali Haghani and you" right="Wed" height={56} bleed={8} gap={12} hover />
+    <MockRow title="Customer call" meta="2 participants" right="Tue" height={56} bleed={8} gap={12} />
+    <MockRow title="Send the follow-up email" height={36} bleed={8} gap={12} avatar={20} check="circle" />
+  </div>
+</Story>
+
+<Finding>
+  <Rule>A row is one component with two height variants (36 and 56) and a single hover rule: 8px bleed per side, md radius. The selection checkbox is the same in every list (see [Checkbox](/docs/components/checkbox)).</Rule>
+</Finding>

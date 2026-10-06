@@ -1,0 +1,38 @@
+---
+title: Shared meetings
+description: Features disappear without explanation when the meeting isn’t yours.
+---
+
+<Sev level="high" />
+
+<Finding>
+  <What>
+    A shared meeting is missing the Notes and Transcript tabs, “Add tag”, and “+ Add” in action items. Nothing explains why. The “…” menu changes too (see [Menus per object](/docs/ux/menus)).
+  </What>
+  <Why>
+    The same page looks different depending on who opens it, and the user can’t tell whether something is missing, broken, or off-limits to them.
+  </Why>
+  <Proposal>
+    Always show the same structure. Anything unavailable is shown disabled with the reason (“The owner didn’t share the transcript”) and, when it applies, an action to request it.
+  </Proposal>
+</Finding>
+
+<Figure eager src="/img/u04-shared-missing.jpg" alt="Shared meeting with no tabs, no Add tag, and no Add in action items" width={572} height={330} caption={<>Dashed outlines mark what does appear on an owned meeting.</>} />
+
+## Proposal
+
+<Story title="Shared meeting header" kind="proposed" note="Tabs and controls are always there; the ones that don’t apply are disabled and explained with a tooltip.">
+  <div className="cb-m" style={{ display: 'grid', gap: 12, maxWidth: 600 }}>
+    <div style={{ display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' }}>
+      <MockChip height={28} border="1px solid #3e3e3e">Sep 21</MockChip>
+      <MockChip height={28} border="1px solid #3e3e3e">32m</MockChip>
+      <MockChip height={28} dashed>+ Add tag</MockChip>
+      <span style={{ flex: 1 }} />
+      <span style={{ fontSize: 12, color: '#909090' }}>Shared by Kevin · view only</span>
+    </div>
+    <div style={{ display: 'flex', gap: 18, borderBottom: '0.5px solid #313131', fontSize: 14, fontWeight: 500 }}>
+      <span style={{ padding: '0 0 8px', borderBottom: '2px solid #cacaca' }}>Notes</span>
+      <span style={{ padding: '0 0 8px', color: '#6a6a6a', display: 'inline-flex', gap: 6, alignItems: 'center' }}>Transcript <span style={{ fontSize: 11, border: '1px solid #3e3e3e', borderRadius: 4, padding: '1px 4px' }}>not shared</span></span>
+    </div>
+  </div>
+</Story>

@@ -1,0 +1,33 @@
+---
+title: The real scale
+description: Every distinct value the app uses for each variable, and the proposed scale.
+---
+
+These are all the values in use today for each variable, measured across the screens and overlays in scope. The right-hand column is the proposed scale; each page in this section details it with samples.
+
+<Measures
+  head={['Variable', 'Values in use', 'Outliers', 'Proposed']}
+  rows={[
+    { label: 'Radius', values: ['4 · 6 · 7 · 10 · 12 · 15 · 16 · pill', '6 in menus and 7 in buttons (nearly identical); 10 only on New meeting; 15 in ⌘K, shortcuts panel, and Share; 16 only on the Ask bar', '4 · 8 · 12 · 16 · pill'] },
+    { label: 'Border width', values: ['0.5 · 1 · 1.5', '1.5 only on the Share dialog checkbox', '0.5 · 1'] },
+    { label: 'Border color', values: ['#313131 · #3E3E3E · #4B4B4B · #6A6A6A', 'The three checkboxes use two grays (#4B4B4B in Meetings and Share, #6A6A6A in action items); Calendar has dividers in two colors on the same page', 'subtle · strong'] },
+    { label: 'Control height', values: ['20 · 22 · 24 · 26 · 28 · 29 · 30 · 31 · 32 · 36 · 37 · 40', '31 in the sidebar and tabs, 32 on the primary, 30 in Settings, 37 on the trial', '24 · 28 · 32 · 36'] },
+    { label: 'Text size', values: ['9 · 11 · 12 · 13 · 14 · 15 · 18 · 24', '9px in avatar initials; a stray 11px', '11 · 12 · 13 · 14 · 15 · 18 · 24'] },
+    { label: 'Font weight', values: ['450 · 500 · 550 · 600 · 700', '550 on some buttons and labels', '450 · 500 · 600 · 700'] },
+    { label: 'Line height', values: ['12px: 16 / 18 / 19.5 · 14px: 17.5 / 20 / 21 / 22.75 · 15px: 22.5 / 30', 'The transcript uses 30px (2.0) and the notes 22.5px (1.5)', 'one per style'] },
+    { label: 'Icons', values: ['9 · 10 · 11 · 12 · 14 · 15 · 16 · 17 · 18', 'The sidebar alone mixes 14, 15, 16, and 17', '12 · 14 · 16 · 20'] },
+    { label: 'Gaps', values: ['1.5 · 2 · 3.5 · 4 · 6 · 8 · 10 · 12 · 16 · 24', '1.5 and 3.5 in the sidebar; 10 between checkbox and text', '2 · 4 · 8 · 12 · 16 · 24 · 32 · 40 · 64'] },
+    { label: 'Text grays', values: ['#FFF · #CACACA · #9D9D9D · #909090 · #7A7A7A · #6A6A6A', '#9D9D9D only in the sidebar; #7A7A7A in a few stray texts', '3 levels'] },
+  ]}
+/>
+
+## What works well
+
+Worth saying before the outliers:
+
+- Interface text almost always stays between 12 and 15px.
+- Right-panel and Settings cards share a 12 radius and a 0.5px #313131 border.
+- The primary button is the same across the app: 32px, radius 7, blue #4262FF.
+- The sidebar is very regular: 31px items with radius 7 and 2px between them.
+
+The proposal starts from those values. Almost everything proposed already exists somewhere in Circleback; the work is choosing one version and applying it everywhere.

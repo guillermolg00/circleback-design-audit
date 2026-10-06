@@ -1,0 +1,45 @@
+---
+title: Search field
+description: Four search fields in four styles.
+---
+
+## Current
+
+<Measures
+  head={['Search field', 'Height', 'Style']}
+  rows={[
+    { label: 'Transcript', values: ['32', 'Radius 7, #2A2A2A background, no border'] },
+    { label: 'Shortcuts panel', values: ['32', 'Radius 7, #313131 background, no border'], flags: [undefined, 'bad'] },
+    { label: 'Filter menu', values: ['32 (in a 41 row)', 'No background, 1px bottom border'], flags: [undefined, 'bad'] },
+    { label: '⌘K', values: ['40', 'No background, 1px separator below'] },
+  ]}
+/>
+
+<Compare>
+  <Figure eager src="/img/f07-transcript.jpg" alt="Transcript search field with a #2A2A2A background" width={572} height={330} caption={<><b>Transcript:</b> 32px, radius 7, #2A2A2A background.</>} />
+  <Figure src="/img/f03-menu-filter.jpg" alt="Filter menu search field with a bottom border" width={500} height={195} fit caption={<><b>Filter:</b> no background, with a bottom border.</>} />
+</Compare>
+
+<Story title="Search fields in use" kind="current">
+  <div className="cb-m" style={{ display: 'grid', gap: 14 }}>
+    <MockSearch placeholder="Search transcript…" background="#2a2a2a" />
+    <MockSearch placeholder="Search shortcuts…" background="#313131" />
+    <MockSearch placeholder="Search filters…" background="transparent" borderBottom width={180} />
+    <MockSearch placeholder="Type a command or search…" background="transparent" height={40} borderBottom width={420} />
+  </div>
+</Story>
+
+## Proposal
+
+<Story title="Search field" kind="proposed" note="Two variants. In a view: 32px, radius 8, input background (#2A2A2A), no border. Inside a popover or palette: no background, with a separator below; 32px in popovers and 40px in palettes.">
+  <div className="cb-m" style={{ display: 'grid', gap: 14 }}>
+    <MockSearch placeholder="Search transcript…" background="#2a2a2a" radius={8} />
+    <MockSearch placeholder="Search shortcuts…" background="#2a2a2a" radius={8} />
+    <MockSearch placeholder="Search filters…" background="transparent" borderBottom="0.5px solid #313131" width={240} />
+    <MockSearch placeholder="Search or ask a question…" background="transparent" height={40} borderBottom="0.5px solid #313131" width={420} />
+  </div>
+</Story>
+
+<Finding>
+  <Rule>In a view, the search field is a regular input (md, sm radius, input background). Inside an overlay it drops the background and is separated from the content by the subtle border. There are never two different input backgrounds.</Rule>
+</Finding>

@@ -1,0 +1,63 @@
+---
+title: "Radii"
+description: "Eight distinct radii across four element families, and a proposal for five tokens."
+---
+
+## Current
+
+<Scale values={[4, 6, 7, 10, 12, 15, 16, 'pill']} />
+
+<Measures
+  head={['Radius', 'Where it appears']}
+  rows={[
+    { label: '4px', values: ['Meetings and Share dialog checkboxes, shortcut keys'] },
+    { label: '6px', values: ['Container and items of every popover (“…” menu, right-click, account, Filter, New meeting), tooltip, New meeting tiles, Share controls'] },
+    { label: '7px', values: ['Primary button, sidebar items, Filter, search fields, Automations explainer card, ⌘K items, nested “See email conversations” card'] },
+    { label: '10px', values: ['Only the sidebar New meeting button'], flags: [ 'bad' ] },
+    { label: '12px', values: ['Right-panel cards, row hover, sidebar promo card, Settings cards'] },
+    { label: '15px', values: ['⌘K, shortcuts panel, Share dialog'], flags: [ 'bad' ] },
+    { label: '16px', values: ['Only the Ask bar'], flags: [ 'bad' ] },
+    { label: 'pill', values: ['Chips, tabs, selection bar, Scroll to now button, send button'] },
+  ]}
+/>
+
+<Story title="Radii in use" kind="current" note="6 and 7 look nearly identical and coexist on the same screen: the context menu (6) opens over a radius-7 button. 15 and 16 are two versions of the same large radius.">
+  <RadiusSwatches
+    items={[
+      { r: 4, label: 'checkbox · key' },
+      { r: 6, label: 'menus · tooltip' },
+      { r: 7, label: 'buttons · inputs' },
+      { r: 10, label: 'New meeting' },
+      { r: 12, label: 'cards · hover' },
+      { r: 15, label: '⌘K · Share' },
+      { r: 16, label: 'Ask bar' },
+      { r: 999, label: 'chips · tabs' },
+    ]}
+  />
+</Story>
+
+## Proposal
+
+Five tokens, each with a clear role. Values that go away are struck through.
+
+<Scale values={[4, 6, 7, 8, 10, 12, 15, 16, 'pill']} add={[8]} drop={[6, 7, 10, 15]} />
+
+<Story title="Radius tokens" kind="proposed">
+  <RadiusSwatches
+    items={[
+      { r: 4, label: 'xs · checkbox, key' },
+      { r: 8, label: 'sm · button, input, menu item' },
+      { r: 12, label: 'md · card, popover, row hover' },
+      { r: 16, label: 'lg · ⌘K, dialogs, Ask bar' },
+      { r: 999, label: 'full · chip, tab, avatar' },
+      { r: 6, label: '→ 8', drop: true },
+      { r: 7, label: '→ 8', drop: true },
+      { r: 10, label: '→ 8', drop: true },
+      { r: 15, label: '→ 16', drop: true },
+    ]}
+  />
+</Story>
+
+<Finding>
+  <Rule>A control (button, input, item) uses **sm**. A surface that holds controls (card, popover, row hover) uses **md**. A surface that holds surfaces (command palette, dialog) uses **lg**, and so does the Ask bar. Nothing that opens from a button has a smaller radius than the button.</Rule>
+</Finding>

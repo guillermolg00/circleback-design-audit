@@ -1,0 +1,45 @@
+---
+title: Roadmap
+description: Fifteen changes in three stages, from cheapest to most structural.
+---
+
+<Steps>
+<Step>
+### Quick fixes · 1–2 weeks
+
+1. Errors with a cause and an action; Delete moves to the menu; titles with dates. → [Dead-end errors](/docs/ux/errors)
+2. One set of actions per meeting; “Delete” everywhere. → [Menus per object](/docs/ux/menus)
+3. Visible filter chips, including those in “Mine”. → [Invisible filters](/docs/ux/filters)
+4. Shortcuts: `?` opens help, without overriding ⌘X or ⌘G; J/K in every list. → [Half-working keyboard](/docs/ux/keyboard)
+5. Empty states with one CTA and consistent copy. → [Empty state](/docs/components/empty-state)
+6. Only one upsell surface at a time. → [Too much upsell](/docs/ux/upsell)
+</Step>
+<Step>
+### System · 2–4 weeks
+
+7. Radius, height, border, gray, and icon tokens in the theme. → [Tokens](/docs/proposal/tokens)
+8. Migrate ListRow, Menu, Chip, Button, Card, Kbd, Search, and Checkbox behind a visual diff. → [Component rules](/docs/proposal/rules)
+9. A single section template in Settings. → [Settings](/docs/components/settings)
+10. Document: 15/24 in Notes and Transcript. → [Notes and transcript](/docs/components/notes-and-transcript)
+11. Accessible labels on every icon button. → [Naming and accessibility](/docs/ux/naming-and-accessibility)
+</Step>
+<Step>
+### Experience · 1–2 months
+
+12. Contextual ⌘K with visible shortcuts. → [Context-blind command palette](/docs/ux/contextual-palette)
+13. Home as “what’s on my plate today.” → [Home and action items](/docs/ux/home-and-action-items)
+14. Action items with dates, grouping, and a link to the transcript.
+15. Adaptive layout: collapsible panel and a visible player at medium widths; shared meetings with the same structure and explained permissions. → [Layout at medium widths](/docs/ux/layout) · [Shared meetings](/docs/ux/shared-meetings)
+</Step>
+</Steps>
+
+## Impact and effort
+
+<Measures
+  head={['Stage', 'Impact', 'Effort', 'Risk']}
+  rows={[
+    { label: 'Quick fixes', values: ['High on perceived quality', 'Low: local changes', 'Low'], flags: ['good', 'good', 'good'] },
+    { label: 'System', values: ['High and cumulative', 'Medium: touches every component', 'Medium: visual regressions'] },
+    { label: 'Experience', values: ['High on retention', 'High: product and backend', 'Medium: requires product decisions'] },
+  ]}
+/>

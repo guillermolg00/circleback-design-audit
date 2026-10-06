@@ -1,0 +1,6 @@
+{
+  "title": "Foundations",
+  "icon": "Shapes",
+  "defaultOpen": true,
+  "pages": ["scale", "radius", "heights", "typography", "borders-and-color", "spacing-and-icons"]
+}

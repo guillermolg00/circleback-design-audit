@@ -1,0 +1,64 @@
+---
+title: Button
+description: The primary is consistent; every other button changes height, radius, and border depending on where it lives.
+---
+
+## Current
+
+The primary button is the same across the app: **32px, radius 7, blue**, in Share, New action item, and New automation. Secondary buttons follow no rule.
+
+<Figure eager
+  src="/img/f05-detail-controls.jpg"
+  alt="Meeting detail with a 32px primary, a 28px chip with border, a 24px chip without border, and a 24px Add button"
+  width={572}
+  height={272}
+  caption={<>The meeting detail mixes four controls in three heights (32, 28, and 24px) and two shapes (radius 7 and pill).</>}
+/>
+
+<Measures
+  head={['Button', 'Height', 'Radius', 'Border']}
+  rows={[
+    { label: 'Primary (Share, New action item, New automation)', values: ['32', '7', '–'], flags: ['good', 'good'] },
+    { label: 'New meeting (sidebar)', values: ['31', '10', '0.5px #3E3E3E'], flags: ['bad', 'bad'] },
+    { label: 'Settings buttons (Export, Sign out, Delete)', values: ['30', '7', '1px #3E3E3E'], flags: ['bad'] },
+    { label: 'Trial button', values: ['37', '7', '0.5px #3E3E3E'], flags: ['bad'] },
+    { label: 'Add (action items)', values: ['24', '7', '–'] },
+    { label: 'Filter', values: ['31', '7', '–'], flags: ['bad'] },
+    { label: 'Scroll to now', values: ['36', 'pill', '–'], flags: ['bad', 'bad'] },
+    { label: 'Send (Ask)', values: ['26', 'pill', '–'], flags: ['bad', 'bad'] },
+  ]}
+/>
+
+<Story title="Buttons in use" kind="current">
+  <div className="cb-m" style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
+    <MockButton variant="primary" height={32} radius={7}>Share</MockButton>
+    <MockButton height={31} radius={10} border="0.5px solid #3e3e3e">+ New meeting</MockButton>
+    <MockButton variant="outline" height={30} radius={7}>Export</MockButton>
+    <MockButton variant="danger" height={30} radius={7}>Sign out everywhere</MockButton>
+    <MockButton height={37} radius={7} border="0.5px solid #3e3e3e">6 days left on Pro</MockButton>
+    <MockButton variant="ghost" height={24} radius={7}>+ Add</MockButton>
+    <MockButton variant="primary" height={36} radius={999}>Scroll to now</MockButton>
+  </div>
+</Story>
+
+## Proposal
+
+<Story title="Button" kind="proposed" note="Three variants (primary, secondary, ghost) and a danger state, in two heights: md (32) and sm (28). Always radius sm (8); the pill shape is reserved for chips and tabs.">
+  <div className="cb-m" style={{ display: 'grid', gap: 14 }}>
+    <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
+      <MockButton variant="primary" radius={8}>Share</MockButton>
+      <MockButton variant="outline" radius={8}>+ New meeting</MockButton>
+      <MockButton variant="ghost" radius={8}>Export</MockButton>
+      <MockButton variant="danger" radius={8}>Delete account</MockButton>
+    </div>
+    <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
+      <MockButton variant="primary" height={28} radius={8}>Scroll to now</MockButton>
+      <MockButton variant="outline" height={28} radius={8}>Filter</MockButton>
+      <MockButton variant="ghost" height={28} radius={8}>+ Add</MockButton>
+    </div>
+  </div>
+</Story>
+
+<Finding>
+  <Rule>A button is md in headers, forms, and dialogs, and sm inside rows, cards, and filter bars. New meeting moves to md as a secondary button with a strong border, and the trial button to an md ghost button; Settings goes from 30 to 32; Scroll to now and Send drop the pill shape.</Rule>
+</Finding>

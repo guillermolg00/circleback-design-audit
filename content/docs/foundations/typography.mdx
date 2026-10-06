@@ -1,0 +1,59 @@
+---
+title: "Typography"
+description: "Eight sizes, five weights, up to four line heights for a single size, and a proposal for eight styles."
+---
+
+## Current
+
+Circleback uses the system font for the interface and **Plus Jakarta Sans 700** only for page titles. That’s a good call and it stays. The problem is the number of combinations.
+
+<Measures
+  head={['Variable', 'Values in use', 'Note']}
+  rows={[
+    { label: 'Sizes', values: ['9 · 11 · 12 · 13 · 14 · 15 · 18 · 24', '9px in avatar initials; 11px in a stray label'] },
+    { label: 'Weights', values: ['450 · 500 · 550 · 600 · 700', '550 shows up on some buttons and labels, very close to 500 and 600'] },
+    { label: '12px', values: ['16 / 18 / 19.5', 'Three line heights for the same meta text'], flags: [undefined, 'bad'] },
+    { label: '14px', values: ['17.5 / 20 / 21 / 22.75', 'Four line heights: row titles, transcript speaker, descriptions'], flags: [undefined, 'bad'] },
+    { label: '15px', values: ['22.5 / 30', 'Notes use 1.5; the transcript, 2.0'], flags: [undefined, 'bad'] },
+    { label: 'Text grays', values: ['#FFF · #CACACA · #9D9D9D · #909090 · #7A7A7A · #6A6A6A', '#9D9D9D only in the sidebar; #7A7A7A in a few places'] },
+  ]}
+/>
+
+<Figure eager src="/img/f06-notes-rhythm.jpg" alt="Notes with 15px text and a 22.5px line height" width={572} height={226} caption={<><b>Notes:</b> 15px with a 22.5 line height. Heading 15px from the text, 22px between bullets.</>} />
+
+<Figure eager src="/img/f07-transcript.jpg" alt="Transcript with 15px text and a 30px line height" width={572} height={330} caption={<><b>Transcript:</b> the same 15px with a 30 line height (2.0). Name at 14/22.75.</>} />
+
+## Proposal
+
+Eight styles, each with a single line height and a default weight. Document text (notes and transcript) shares one style.
+
+<Story title="Type styles" kind="proposed">
+  <TypeSamples
+    items={[
+      { token: 'display 24/32 700', size: 24, lh: 32, weight: 700, text: 'Meetings', family: 'display' },
+      { token: 'subtitle 18/24 600', size: 18, lh: 24, weight: 600, text: 'Nothing here yet' },
+      { token: 'section 15/22 600', size: 15, lh: 22, weight: 600, text: 'Overview' },
+      { token: 'doc 15/24 450', size: 15, lh: 24, weight: 450, text: 'Notes and transcript text, with the same line height in both.' },
+      { token: 'row 14/20 500', size: 14, lh: 20, weight: 500, text: 'Row title' },
+      { token: 'ui 13/20 450–500', size: 13, lh: 20, weight: 450, text: 'Menus, sidebar, buttons, and chips' },
+      { token: 'meta 12/16 450', size: 12, lh: 16, weight: 450, text: 'Wed · 40m · 2 participants', color: '#909090' },
+      { token: 'kbd 11/1 500 mono', size: 11, lh: 11, weight: 500, text: '⌘ K' },
+    ]}
+  />
+</Story>
+
+<Story title="Text grays" kind="proposed" note="Three levels. #9D9D9D and #7A7A7A merge into the nearest level.">
+  <ColorDots
+    items={[
+      { hex: '#CACACA', label: 'text 1 · primary' },
+      { hex: '#909090', label: 'text 2 · secondary' },
+      { hex: '#6A6A6A', label: 'text 3 · tertiary, placeholders' },
+      { hex: '#9D9D9D', label: '→ text 2', drop: true },
+      { hex: '#7A7A7A', label: '→ text 3', drop: true },
+    ]}
+  />
+</Story>
+
+<Finding>
+  <Rule>Weights: 450 for body text, 500 for interface labels, 600 for section headings, and 700 only for display. The 550 weight goes away. Each style has a single line height.</Rule>
+</Finding>

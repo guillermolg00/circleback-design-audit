@@ -1,0 +1,72 @@
+---
+title: Menus per object
+description: The same object has three different menus depending on where you open it.
+---
+
+<Sev level="high" />
+
+<Finding>
+  <What>
+    The “…” menu on an owned meeting: Rename, Automations, Copy notes, Copy transcript, Delete. Right-click in the list: Share, Tags, Automations, Delete. On a shared meeting: Copy notes and Remove. “Delete” and “Remove” name the same action.
+  </What>
+  <Why>
+    The user learns one menu and runs into another. Share and Tags only exist in the context menu; Rename and Copy transcript only in “…”. Nothing explains why.
+  </Why>
+  <Linear>
+    The same set of actions, in the same order and with their shortcuts, in the context menu, in “…”, and in ⌘K on the selection.
+  </Linear>
+  <Proposal>
+    One set of actions per object, in the same order everywhere. Anything that doesn’t apply appears disabled with the reason (“Only the owner can rename”).
+  </Proposal>
+</Finding>
+
+<Compare>
+  <Figure eager src="/img/u02-menu-owned.jpg" alt="Owned meeting menu with five actions" width={322} height={232} fit caption="The “…” menu on an owned meeting." />
+  <Figure src="/img/f03-menu-context.jpg" alt="List context menu with four actions" width={322} height={192} fit caption="Right-click in the list." />
+  <Figure src="/img/u02-menu-shared.jpg" alt="Shared meeting menu with two actions" width={360} height={118} fit caption="The “…” menu on a shared meeting." />
+</Compare>
+
+## Proposal
+
+<Story title="One menu per meeting" kind="proposed" note="The same content in the “…” menu, the context menu, and ⌘K. On the right, how it looks on a shared meeting: anything not allowed is disabled and explained.">
+  <div className="cb-m" style={{ display: 'flex', gap: 24, flexWrap: 'wrap', alignItems: 'flex-start' }}>
+    <MockMenu
+      width={250}
+      radius={12}
+      itemHeight={32}
+      itemRadius={8}
+      border="0.5px solid #313131"
+      items={[
+        { label: 'Share', kbd: ['S'], active: true },
+        { label: 'Add tag', kbd: ['T'] },
+        { label: 'Automations' },
+        { sep: true, label: '' },
+        { label: 'Copy link', kbd: ['⇧', '⌘', 'C'] },
+        { label: 'Copy notes' },
+        { label: 'Copy transcript' },
+        { label: 'Rename', kbd: ['R'] },
+        { sep: true, label: '-' },
+        { label: 'Delete', kbd: ['⌘', '⌫'], danger: true },
+      ]}
+    />
+    <MockMenu
+      width={250}
+      radius={12}
+      itemHeight={32}
+      itemRadius={8}
+      border="0.5px solid #313131"
+      items={[
+        { label: 'Share', disabled: true, sub: 'Only the owner can share' },
+        { label: 'Add tag', kbd: ['T'] },
+        { label: 'Automations' },
+        { sep: true, label: '' },
+        { label: 'Copy link', kbd: ['⇧', '⌘', 'C'] },
+        { label: 'Copy notes' },
+        { label: 'Copy transcript', disabled: true, sub: 'Not shared with you' },
+        { label: 'Rename', disabled: true, sub: 'Only the owner can rename' },
+        { sep: true, label: '-' },
+        { label: 'Remove from my meetings', danger: true },
+      ]}
+    />
+  </div>
+</Story>

@@ -1,0 +1,36 @@
+---
+title: Half-working keyboard
+description: Good shortcuts, unevenly applied and hard to discover.
+---
+
+<Sev level="medium" />
+
+<Finding>
+  <What>
+    The shortcuts panel (⌘/) promises J/K in lists, but in Meetings J/K didn’t move the selection; in People it did. `?` focuses the assistant, while the convention (Linear, GitHub, Gmail) is to open help. `⌘X` creates a clip and overrides Cut; `⌘G` copies a link and overrides Find Next. F opens filters or goes full screen depending on context. Tooltips do show shortcuts (Filter → F), but menus and ⌘K don’t.
+  </What>
+  <Linear>
+    Single-letter shortcuts for actions on the object (S status, A assign, L labels), G plus a letter to navigate, and the shortcut visible in tooltips, menus, and ⌘K. None of them overrides a system shortcut.
+  </Linear>
+  <Proposal>
+    Make `?` open help. Move Create clip and Copy link to free combinations (⇧⌘X and ⇧⌘C). Make J/K work in every list. Show the shortcut on every menu item and in ⌘K, and add G + letter navigation (G M meetings, G A action items).
+  </Proposal>
+</Finding>
+
+<Figure eager src="/img/u06-shortcut-conflicts.jpg" alt="Shortcuts panel with conflicts highlighted" width={460} height={650} fit caption="Conflicts highlighted in the shortcuts panel." />
+
+## Proposed shortcut map
+
+<Measures
+  head={['Action', 'Current', 'Proposed']}
+  rows={[
+    { label: 'Open shortcuts help', values: ['⌘ /', '? and ⌘ /'] },
+    { label: 'Focus the assistant', values: ['?', '⌘ J'], flags: ['bad'] },
+    { label: 'Create clip', values: ['⌘ X', '⇧ ⌘ X'], flags: ['bad'] },
+    { label: 'Copy link to selection', values: ['⌘ G', '⇧ ⌘ C'], flags: ['bad'] },
+    { label: 'Open filters', values: ['F (in lists)', 'F'] },
+    { label: 'Player full screen', values: ['F (in playback)', '⇧ F'], flags: ['bad'] },
+    { label: 'Go to Meetings / Action items / People', values: ['–', 'G M · G A · G P'] },
+    { label: 'Move selection in lists', values: ['J / K (People only)', 'J / K in all lists'], flags: ['bad'] },
+  ]}
+/>

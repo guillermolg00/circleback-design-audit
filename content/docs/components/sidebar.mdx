@@ -1,0 +1,57 @@
+---
+title: Sidebar
+description: The most consistent component in the app, with three exceptions.
+---
+
+## Current
+
+Items are 31px with radius 7, 2px apart, with groups 16px apart. The exceptions are the New meeting button (31px with radius 10), the trial button (37px), and the icons, which mix 14, 15, 16, and 17px.
+
+<Figure eager
+  src="/img/f09-sidebar.jpg"
+  alt="Annotated sidebar with heights, radii, and icons"
+  width={349}
+  height={700}
+  fit
+  caption={<>New meeting: 31px with radius 10 and a 0.5px border. Items: 31px with radius 7. Trial: 37px. Pink marks the icons that aren’t 16px.</>}
+/>
+
+<Measures
+  head={['Element', 'Height', 'Radius', 'Other']}
+  rows={[
+    { label: 'Workspace', values: ['31', '7', 'Icon 14 and 17px'] },
+    { label: 'New meeting', values: ['31', '10', 'Border 0.5px #3E3E3E'], flags: [undefined, 'bad'] },
+    { label: 'Nav item', values: ['31', '7', '13px w500 #9D9D9D · 2px between items'] },
+    { label: 'Group label (“Spaces”)', values: ['–', '–', '12px w500 · 16px above'] },
+    { label: 'Promo card', values: ['–', '12', 'Padding 16/12 · 1px #3E3E3E'], flags: [undefined, undefined, 'bad'] },
+    { label: 'Trial button', values: ['37', '7', 'Border 0.5px'], flags: ['bad'] },
+    { label: 'Icons', values: ['14 · 15 · 16 · 17', '–', '–'], flags: ['bad'] },
+  ]}
+/>
+
+## Proposal
+
+<Story title="Sidebar" kind="proposed" note="32px items with radius 8, 16px icons, 13/500 text in text 2. New meeting is an md secondary button. The trial is an md ghost button. One upsell surface at a time.">
+  <div className="cb-m" style={{ width: 228, margin: '0 auto', display: 'grid', gap: 2, padding: 12, background: '#1f1f1f', borderRadius: 12 }}>
+    <MockButton variant="outline" radius={8}>+ New meeting</MockButton>
+    <div style={{ height: 12 }} />
+    {['Home', 'Meetings', 'Action items', 'Automations', 'Insights', 'Ask'].map((label, i) => (
+      <div key={label} className="cb-mi" data-active={i === 1 ? 'true' : undefined} style={{ height: 32, borderRadius: 8, padding: '0 8px', gap: 8, fontWeight: 500, color: i === 1 ? '#cacaca' : '#909090' }}>
+        <i /> {label}
+      </div>
+    ))}
+    <div style={{ height: 12 }} />
+    <div style={{ fontSize: 12, fontWeight: 500, lineHeight: '24px', color: '#6a6a6a', padding: '0 8px' }}>Contacts</div>
+    {['People', 'Companies'].map((label) => (
+      <div key={label} className="cb-mi" style={{ height: 32, borderRadius: 8, padding: '0 8px', gap: 8, fontWeight: 500, color: '#909090' }}>
+        <i /> {label}
+      </div>
+    ))}
+    <div style={{ height: 96 }} />
+    <MockButton variant="ghost" radius={8}>6 days left on Pro</MockButton>
+  </div>
+</Story>
+
+<Finding>
+  <Rule>The sidebar uses the same tokens as the rest of the app: md for items and buttons, 16 for icons, a gap of 2 between items and 16 between groups. “Spaces” gets renamed to describe what it groups (People and Companies).</Rule>
+</Finding>

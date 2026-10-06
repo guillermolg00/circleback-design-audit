@@ -1,0 +1,37 @@
+---
+title: Empty state
+description: Automations and Insights follow the same template and resolve it differently.
+---
+
+## Current
+
+Explainer card, empty block, and CTA. In Automations the empty block sits 40px below and overflows the column by 16px; in Insights it sits 104px below, centered at 448px. Both repeat the header CTA, and in Insights the copy asks you to create an automation while the button says “Generate insights”.
+
+<Figure eager src="/img/f11-automations-empty.jpg" alt="Automations: card with radius 7 and padding 32, empty block 40px below and 16px outside the column, duplicate CTA" width={650} height={410} caption={<><b>Automations:</b> empty block 40px below, 16px outside the column, and two identical CTAs.</>} />
+
+<Figure src="/img/f11-insights-empty.jpg" alt="Insights: empty block 104px below, copy that asks for an automation, and a button that says Generate insights" width={650} height={360} caption={<><b>Insights:</b> empty block 104px below. The copy and the button say different things.</>} />
+
+<Measures
+  head={['Page', 'Explainer card', 'Gap to block', 'Block width', 'CTA']}
+  rows={[
+    { label: 'Automations', values: ['r7 · padding 32 · 1px', '40px', '1084px (16px outside the column)', '2 identical'], flags: ['bad', undefined, 'bad', 'bad'] },
+    { label: 'Insights', values: ['r7 · padding 32 · 1px', '104px', '448px centered', '2 identical, copy mismatch'], flags: ['bad', 'bad', undefined, 'bad'] },
+  ]}
+/>
+
+## Proposal
+
+<Story title="Empty state" kind="proposed" note="A 20px icon, an 18/24 title, one line of text explaining what it is, one CTA, and a suggested template. 40px below the header, aligned to the column. The explainer card goes away: its content is the empty state.">
+  <div className="cb-m" style={{ border: '0.5px dashed #3e3e3e', borderRadius: 12 }}>
+    <MockEmpty
+      title="No automations yet"
+      text="Automations run after a meeting ends: share notes, post to Slack, update your CRM."
+      cta="New automation"
+      template="Use a template"
+    />
+  </div>
+</Story>
+
+<Finding>
+  <Rule>An empty state has a single CTA (the header one disappears while there is no content), copy that matches the button, and a quick way in: templates. It spans the column width and starts 40px below the header.</Rule>
+</Finding>

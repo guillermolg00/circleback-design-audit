@@ -1,0 +1,41 @@
+---
+title: Shortcut key
+description: The same key in three different styles depending on where it appears.
+---
+
+## Current
+
+<Figure eager src="/img/f04-kbd-tooltip.jpg" alt="Tooltip with a 20 by 20 key and no border" width={380} height={100} fit caption={<><b>Tooltip:</b> 20×20, no border, #1D1D1D background.</>} />
+<Figure eager src="/img/f04-kbd-panel.jpg" alt="Shortcuts panel with a 21 by 20 key and a 1px border" width={460} height={440} fit caption={<><b>Shortcuts panel:</b> 21×20 with a 1px #3E3E3E border.</>} />
+
+<Measures
+  head={['Where', 'Size', 'Border', 'Background', 'Text']}
+  rows={[
+    { label: 'Tooltip (“Filter F”)', values: ['20×20 · r4', 'none', '#1D1D1D', '12px'] },
+    { label: '⌘K (“Tab”)', values: ['29×24 · r4', 'none', '#313131', '12px'], flags: ['bad', undefined, 'bad'] },
+    { label: 'Shortcuts panel', values: ['21×20 · r4', '1px #3E3E3E', '#1D1D1D', '12px'] },
+  ]}
+/>
+
+<Story title="Keys in use" kind="current">
+  <div className="cb-m" style={{ display: 'flex', gap: 28, alignItems: 'center', flexWrap: 'wrap' }}>
+    <MockTooltip label="Filter" kbd="F" />
+    <span style={{ display: 'inline-flex', gap: 8, alignItems: 'center', fontSize: 12, color: '#909090' }}>Ask Circleback <Kbd style="cmdk">Tab</Kbd></span>
+    <span style={{ display: 'inline-flex', gap: 4 }}><Kbd style="panel">⌘</Kbd><Kbd style="panel">K</Kbd></span>
+  </div>
+</Story>
+
+## Proposal
+
+<Story title="Shortcut key" kind="proposed" note="20px tall, radius 4, 1px strong border, panel background, 11px mono text. It is the same component in tooltips, menus, ⌘K, and the shortcuts panel.">
+  <div className="cb-m" style={{ display: 'flex', gap: 28, alignItems: 'center', flexWrap: 'wrap' }}>
+    <span style={{ display: 'inline-flex', gap: 4 }}><Kbd>⌘</Kbd><Kbd>K</Kbd></span>
+    <span style={{ display: 'inline-flex', gap: 4 }}><Kbd>G</Kbd><span style={{ fontSize: 11, color: '#6a6a6a', alignSelf: 'center' }}>then</span><Kbd>M</Kbd></span>
+    <span style={{ display: 'inline-flex', gap: 4 }}><Kbd>Esc</Kbd></span>
+    <span style={{ display: 'inline-flex', gap: 4 }}><Kbd>Tab</Kbd></span>
+  </div>
+</Story>
+
+<Finding>
+  <Rule>A key is a component, not a local style. It appears wherever a control has a shortcut: in the tooltip, in the menu item, and in the ⌘K command. That way, people learn the keyboard shortcuts just by using the interface.</Rule>
+</Finding>

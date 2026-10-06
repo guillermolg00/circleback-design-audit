@@ -1,0 +1,76 @@
+---
+title: Dead-end errors
+description: Recording errors only offer to delete the meeting.
+---
+
+<Sev level="high" />
+
+<Finding>
+  <What>
+    In the list, 5 of 8 visible rows are errors (“wasn’t allowed in”, “couldn’t pick up any conversation”, “error processing”). The only action is a red *Delete*, and at 800px wide it gets cut off (“Del”) or disappears. In the detail view, the notice isn’t clickable and the page is left empty. Three rows have the same name (“New meeting”).
+  </What>
+  <Why>
+    The user doesn’t know whether the problem will happen again or how to avoid it. The failed recurring meeting stays toggled on in Home with no warning, and the only suggested action is destructive.
+  </Why>
+  <Proposal>
+    Each error gets its cause and one primary action: retry, upload the recording, or see how to admit the bot in Zoom, Meet, or Teams. Delete moves into the menu. Add a warning on the next occurrence of the recurring meeting, and use default titles with the date and time.
+  </Proposal>
+</Finding>
+
+<Figure eager src="/img/u01-meetings-errors.jpg" alt="Meetings list with five error rows highlighted and Delete as the only action" width={572} height={472} caption={<>Error rows highlighted in pink. In the first row, “Delete” isn’t even visible.</>} />
+
+<Figure src="/img/u01-failed-detail.jpg" alt="Failed meeting detail with no cause and no action" width={572} height={280} caption={<>Failed meeting detail: the notice isn’t clickable and there is nothing else on the page.</>} />
+
+## Proposal
+
+<Story title="Error row with a way out" kind="proposed" note="A title with the date instead of “New meeting”, the cause in plain language, one primary action, and Delete inside the menu.">
+  <div className="cb-m" style={{ display: 'grid', gap: 4, padding: '4px 8px' }}>
+    <MockRow
+      title="Weekly sync · Sep 28, 4:00 PM"
+      gap={12}
+      meta="The host didn't admit Circleback"
+      error
+      height={56}
+      bleed={8}
+      hover
+      actions={<>
+        <MockButton height={28} radius={8} variant="outline">How to fix</MockButton>
+        <MockButton height={28} radius={8} variant="outline">Upload recording</MockButton>
+        <MockButton height={28} radius={8} variant="ghost" padX={8}>⋯</MockButton>
+      </>}
+    />
+    <MockRow
+      title="Customer call · Fri"
+      gap={12}
+      meta="No speech detected in the recording"
+      error
+      height={56}
+      bleed={8}
+      actions={<>
+        <MockButton height={28} radius={8} variant="outline">Retry</MockButton>
+        <MockButton height={28} radius={8} variant="ghost" padX={8}>⋯</MockButton>
+      </>}
+    />
+  </div>
+</Story>
+
+<Story title="Failed meeting detail" kind="proposed" note="The error state takes the place of the notes and explains what happened, what to do now, and how to avoid it next time.">
+  <div className="cb-m" style={{ maxWidth: 520 }}>
+    <MockCard width="100%">
+      <div style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
+        <span style={{ width: 8, height: 8, borderRadius: 99, background: '#eb584b', marginTop: 6, flexShrink: 0 }} />
+        <div style={{ display: 'grid', gap: 12 }}>
+          <div style={{ fontSize: 14, fontWeight: 500 }}>Circleback couldn't join this meeting</div>
+          <div style={{ fontSize: 13, color: '#909090', lineHeight: '20px' }}>The host didn't admit the notetaker from the waiting room. Nothing was recorded.</div>
+          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+            <MockButton variant="primary" height={28} radius={8}>Upload a recording</MockButton>
+            <MockButton variant="outline" height={28} radius={8}>How to admit Circleback</MockButton>
+          </div>
+          <label style={{ display: 'flex', gap: 12, alignItems: 'center', fontSize: 12, color: '#909090' }}>
+            <MockCheckbox size={16} radius={4} on /> Remind the host 5 minutes before the next occurrence
+          </label>
+        </div>
+      </div>
+    </MockCard>
+  </div>
+</Story>

@@ -1,0 +1,25 @@
+---
+title: Method
+description: How it was measured, the scope, and what was left out.
+icon: Ruler
+---
+
+## What was measured
+
+Everything was measured on the real app, in production, with `getComputedStyle` and `getBoundingClientRect`: sizes, radii, borders, gaps, paddings, and the visible distance between blocks. The audit covered:
+
+- **10 screens:** Home, Meetings, Action Items, Automations, Insights, Ask, People, Companies, meeting detail (Notes and Transcript), and a shared meeting.
+- **6 Settings sections:** Account, Preferences, Calendar, Sharing, Emails, and Tags.
+- **8 overlays:** the “…” menu, the right-click menu, the account menu, New meeting, Filter, ⌘K, the shortcuts panel, and the Share dialog. The tooltip and the selection bar were measured as controls (see the [Appendix](/docs/appendix)).
+
+## How it was captured
+
+Screenshots were taken at **800px wide** so they render at 1:1 scale, except those that needed the right panel (1068, 1180, and 1408px). The pink annotations are redlines drawn on the live page, with measured values, not estimates.
+
+Personal data (meeting titles, third-party names, emails, note content, and photos) is blurred. This was a read-only review: nothing was created, modified, or deleted.
+
+## Limits
+
+- Only few meetings and a single workspace.
+- Dark mode only. Light mode and the desktop and mobile apps were not reviewed.
+- Measurements come from a specific version of the app (September 29, 2026); some may have changed since.

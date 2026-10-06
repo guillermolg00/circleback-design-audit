@@ -1,0 +1,62 @@
+---
+title: Settings
+description: A solid base rhythm, but two section templates and cards that don’t match each other.
+---
+
+## Current
+
+The base rhythm in Settings is good and stable: **27px from the title to the first label, 15px from the label to the card, and 43px from one card to the next section**. The problem is that two templates coexist. Account, Preferences, and Calendar use a section label (15px, weight 500). Emails, Sharing, and Tags use a page description (14px, weight 500) 6px below the title, with unlabeled cards.
+
+<Figure eager src="/img/f12-settings-account.jpg" alt="Settings Account: 27px to the label, 15px to the card, 43px to the next section" width={572} height={680} caption={<><b>Account:</b> section-label template; 47px rows with 11/19 padding.</>} />
+
+<Figure src="/img/f12-settings-emails.jpg" alt="Settings Emails: page description 6px below the title and an unlabeled card" width={572} height={240} caption={<><b>Emails:</b> page-description template with no section label.</>} />
+
+<Figure
+  src="/img/f12-settings-calendar.jpg"
+  alt="Settings Calendar: two cards with 55 and 62px rows, 13 and 14px text, and dividers in two colors"
+  width={799}
+  height={590}
+  caption={<><b>Calendar</b>, on the same page: the first card has 55px rows, 13px text, and a #3E3E3E divider; the second has 62px rows, 14/12px text, and a #313131 divider.</>}
+/>
+
+## Measurements
+
+<Measures
+  head={['Section', 'Template', 'Rows', 'Row padding', 'Divider']}
+  rows={[
+    { label: 'Account', values: ['Section label', '46–47 and 61–62', '11 / 19', '0.5px #313131'] },
+    { label: 'Preferences', values: ['Section label (+ description on one)', '46–47, 61, 97, 187', '11 / 19', '0.5px #313131'] },
+    { label: 'Calendar', values: ['Label + description', '55 and 62', '11 / 19', '#3E3E3E, #313131'], flags: [undefined, 'bad', undefined, 'bad'] },
+    { label: 'Emails · Sharing', values: ['Page description', '61–62', '11 / 19', '0.5px #313131'], flags: ['bad'] },
+    { label: 'Tags', values: ['Page description', '65–68', '16 / 19', '0.5px #313131'], flags: ['bad', undefined, 'bad'] },
+  ]}
+/>
+
+## Proposal
+
+<Story title="Settings section" kind="proposed" note="One template: label in the section style (15/22 600), optional description 13/450 in text 2, 12px to the card, 40px between sections. 56px rows with the content centered and 20px side padding, title 14/20, and description 12/16.">
+  <div className="cb-m" style={{ maxWidth: 560, display: 'grid', gap: 12 }}>
+    <div>
+      <div style={{ fontSize: 15, fontWeight: 600, lineHeight: '22px' }}>Joining preferences</div>
+      <div style={{ fontSize: 13, color: '#909090', lineHeight: '20px' }}>Choose which meetings Circleback joins automatically.</div>
+    </div>
+    <MockSettings>
+      <MockSettingsRow title="All meetings" text="All meetings on my calendar." />
+      <MockSettingsRow title="Organized by someone else" text="I'm invited, not the organizer." />
+      <MockSettingsRow title="Declined or pending" text="I've declined or haven't responded yet." />
+    </MockSettings>
+    <div style={{ height: 16 }} />
+    <div>
+      <div style={{ fontSize: 15, fontWeight: 600, lineHeight: '22px' }}>Connected calendars</div>
+      <div style={{ fontSize: 13, color: '#909090', lineHeight: '20px' }}>You can record meetings from these calendars.</div>
+    </div>
+    <MockSettings>
+      <MockSettingsRow title="Google Calendar" text="guillermo@…" control="button" />
+      <MockSettingsRow title="Outlook Calendar" control="button" />
+    </MockSettings>
+  </div>
+</Story>
+
+<Finding>
+  <Rule>Every Settings section has a label; the description is optional and goes below the label, not below the page title. Rows share height (56, content centered), side padding (20), type (14/12), and divider (subtle). The page’s horizontal padding goes from 40 to 64, like the rest of the app.</Rule>
+</Finding>

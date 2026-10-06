@@ -1,0 +1,18 @@
+{
+  "title": "User experience",
+  "icon": "Compass",
+  "defaultOpen": true,
+  "pages": [
+    "index",
+    "errors",
+    "menus",
+    "contextual-palette",
+    "shared-meetings",
+    "keyboard",
+    "filters",
+    "layout",
+    "upsell",
+    "home-and-action-items",
+    "naming-and-accessibility"
+  ]
+}

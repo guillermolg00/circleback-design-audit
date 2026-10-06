@@ -1,0 +1,52 @@
+---
+title: Chip and tab
+description: Three pill heights for date, person, and tab.
+---
+
+## Current
+
+<Measures
+  head={['Chip', 'Height', 'Border', 'Background', 'Text']}
+  rows={[
+    { label: 'Assigned person (action item)', values: ['24', '–', '#232323', '12px'] },
+    { label: 'Date, duration, tag (meeting)', values: ['28', '1px #313131', '–', '12px'] },
+    { label: 'Tabs All / Mine / Shared with me', values: ['31', '1px #313131', '#313131 when active', '13px'], flags: ['bad'] },
+    { label: 'Active filters', values: ['none', '–', '–', '–'], flags: ['bad'] },
+  ]}
+/>
+
+<Story title="Chips in use" kind="current">
+  <div className="cb-m" style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
+    <MockChip height={24} fontSize={12} filled>Guillermo López</MockChip>
+    <MockChip height={28} fontSize={12} border="1px solid #313131">Wed</MockChip>
+    <MockChip height={28} fontSize={12} border="1px solid #313131">40m</MockChip>
+    <MockChip height={28} fontSize={12} border="1px solid #313131">Add tag</MockChip>
+    <MockChip height={31} border="1px solid #313131">All</MockChip>
+    <MockChip height={31} border="1px solid #313131" background="#313131">Mine</MockChip>
+  </div>
+</Story>
+
+## Proposal
+
+<Story title="Chip and tab" kind="proposed" note="Two heights. 24px without a border for people; 28px with a strong border for meta, tags, tabs, and active filters. An active filter is a filled chip with an ×.">
+  <div className="cb-m" style={{ display: 'grid', gap: 14 }}>
+    <div style={{ display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' }}>
+      <MockChip height={24} filled>Guillermo López</MockChip>
+      <MockChip height={28} border="1px solid #3e3e3e">Wed</MockChip>
+      <MockChip height={28} border="1px solid #3e3e3e">40m</MockChip>
+      <MockChip height={28} dashed>+ Add tag</MockChip>
+    </div>
+    <div style={{ display: 'flex', gap: 6, alignItems: 'center', flexWrap: 'wrap' }}>
+      <MockChip height={28} border="1px solid #3e3e3e">All</MockChip>
+      <MockChip height={28} border="1px solid #3e3e3e" filled>Mine</MockChip>
+      <span style={{ width: 12 }} />
+      <MockChip height={28} border="1px solid #3e3e3e" filled removable>Assignee: Me</MockChip>
+      <MockChip height={28} border="1px solid #3e3e3e" filled removable>Status: Open</MockChip>
+      <MockChip height={28} dashed>+ Filter</MockChip>
+    </div>
+  </div>
+</Story>
+
+<Finding>
+  <Rule>Chips and tabs share one component. Tabs drop from 31 to 28 to line up with Filter. Filters applied by a tab (like “Mine”) show up as removable chips, never hidden (see [Invisible filters](/docs/ux/filters)).</Rule>
+</Finding>

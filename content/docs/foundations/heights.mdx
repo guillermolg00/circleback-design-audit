@@ -1,0 +1,60 @@
+---
+title: "Heights"
+description: "Twelve control heights from 20 to 40px, and a proposal for four plus two row heights."
+---
+
+## Current
+
+<Scale values={[20, 22, 24, 26, 28, 29, 30, 31, 32, 36, 37, 40]} />
+
+<Measures
+  head={['Height', 'Where it appears']}
+  rows={[
+    { label: '20px', values: ['Shortcut keys (tooltip and panel)'] },
+    { label: '22 · 24px', values: ['Share dialog controls, action items “Add” button, assigned person chip'] },
+    { label: '26px', values: ['Action Items page rows, Ask send button'] },
+    { label: '28px', values: ['Date, duration, and tag chips in the meeting'] },
+    { label: '29px', values: ['People right-panel controls'], flags: ['bad'] },
+    { label: '30px', values: ['Settings buttons (Export, Sign out, Delete account)'], flags: ['bad'] },
+    { label: '31px', values: ['Sidebar items, New meeting, Filter, All / Mine tabs'], flags: ['bad'] },
+    { label: '32px', values: ['Primary button, transcript and shortcuts search fields'] },
+    { label: '36px', values: ['Menu items (right-click, “…”, Filter), Scroll to now button'] },
+    { label: '37px', values: ['Sidebar trial button'], flags: ['bad'] },
+    { label: '40px', values: ['⌘K items'], flags: ['bad'] },
+  ]}
+/>
+
+<Story title="Control heights in use" kind="current" note="Three controls that sit together on the same screen measure 30, 31, and 32px: Settings button, sidebar item, and primary button. The difference doesn’t read as intent, but as noise.">
+  <HeightSwatches
+    items={[
+      { h: 24, label: 'person chip · Add' },
+      { h: 26, label: 'action item row' },
+      { h: 28, label: 'meta chip' },
+      { h: 30, label: 'Settings button' },
+      { h: 31, label: 'sidebar · tabs · Filter' },
+      { h: 32, label: 'primary' },
+      { h: 36, label: 'menu item' },
+      { h: 37, label: 'trial' },
+      { h: 40, label: '⌘K item' },
+    ]}
+  />
+</Story>
+
+## Proposal
+
+<Scale values={[24, 28, 32, 36]} />
+
+<Story title="Height tokens" kind="proposed" note="Menu items use 32px in every popover (48px with a description) and 36px in the command palette. List rows use 36px for one line and 56px for two.">
+  <HeightSwatches
+    items={[
+      { h: 24, label: 'xs · person chip', radius: 8 },
+      { h: 28, label: 'sm · chips, tabs, Filter, sm button', radius: 8 },
+      { h: 32, label: 'md · buttons, inputs, sidebar items, popover items', radius: 8 },
+      { h: 36, label: 'lg · palette item', radius: 8 },
+    ]}
+  />
+</Story>
+
+<Finding>
+  <Rule>Every control fits one of four heights. If two controls share a bar (header, row, toolbar), they share a height. The sidebar goes from 31 to 32; tabs and Filter, from 31 to 28; Settings buttons, from 30 to 32; the trial button, from 37 to 32.</Rule>
+</Finding>

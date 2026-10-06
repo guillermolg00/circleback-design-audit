@@ -1,0 +1,46 @@
+---
+title: Home and action items
+description: Home only shows the calendar, and action items can’t be worked on.
+---
+
+<Sev level="medium" />
+
+<Finding>
+  <What>
+    Home shows only upcoming meetings, with unlabeled toggles that are explained on hover; it leaves out failed meetings and pending action items, and its right panel changes on hover. Action items have no due date or priority, aren’t grouped by meeting, and clicking one only expands it in the same row, with no link to the moment in the transcript.
+  </What>
+  <Linear>
+    Inbox and My issues answer “what needs my attention today”. An issue has editable properties with shortcuts (status, assignee, priority, date) and opens in its own view.
+  </Linear>
+  <Proposal>
+    Turn Home into “what’s on my plate today”: upcoming meetings, failed meetings that need action, and open action items. Action items get a date, are grouped by meeting, and have a “View in transcript” link. The right panel changes on selection, not on mouse hover.
+  </Proposal>
+</Finding>
+
+## Proposal
+
+<Story title="Home" kind="proposed" note="Three groups in order of urgency. Failed meetings appear with their action.">
+  <div className="cb-m" style={{ display: 'grid', gap: 24, padding: '4px 8px', maxWidth: 640 }}>
+    <div>
+      <Label>Needs your attention</Label>
+      <MockRow
+        title="Weekly sync · yesterday"
+        gap={12}
+        meta="The host didn't admit Circleback"
+        error
+        height={56}
+        bleed={8}
+        actions={<><MockButton height={28} radius={8} variant="outline">Upload recording</MockButton></>}
+      />
+    </div>
+    <div>
+      <Label>Open action items · 2</Label>
+      <MockRow title="Send design feedback notes" meta="From Design eng chat · due Fri" height={56} bleed={8} gap={12} avatar={20} check="circle" />
+      <MockRow title="Book the follow-up call" meta="From Customer call · due Mon" height={56} bleed={8} gap={12} avatar={20} check="circle" />
+    </div>
+    <div>
+      <Label>Today</Label>
+      <MockRow title="Design review" meta="2 – 3 PM · Circleback will join" right="●" height={56} bleed={8} gap={12} />
+    </div>
+  </div>
+</Story>

@@ -1,0 +1,39 @@
+---
+title: Context-blind command palette
+description: The command palette navigates and searches, but offers no actions on the open object and shows no shortcuts.
+---
+
+<Sev level="high" />
+
+<Finding>
+  <What>
+    Inside a meeting, searching “share” returns “Copy referral link”, not “Share this meeting”. ⌘K navigates well (Settings sections included) and lets you hand off to the AI with Tab, but it offers no actions on the open object, and no command shows its shortcut.
+  </What>
+  <Linear>
+    ⌘K puts actions on the current object first (change status, assign, copy link) and shows the shortcut to the right of each command, which teaches the keyboard as you go.
+  </Linear>
+  <Proposal>
+    Add a “This meeting” group at the top, with Share, Add tag, Automations, Copy link, and Delete, and show the shortcut on every command. Do the same for a selection in the list.
+  </Proposal>
+</Finding>
+
+<Figure eager src="/img/u03-cmdk-share.jpg" alt="Searching “share” in the palette returns Copy referral link" width={745} height={118} caption={<>The only action for “share” is the referral link.</>} />
+
+## Proposal
+
+<Story title="Contextual ⌘K" kind="proposed" note="The first group depends on where you are. Commands show their shortcut and sections have labels.">
+  <div className="cb-m" style={{ borderRadius: 16, border: '0.5px solid #313131', background: '#1d1d1d', maxWidth: 560, boxShadow: '0 16px 40px rgba(0,0,0,.45)' }}>
+    <div style={{ display: 'flex', alignItems: 'center', height: 40, padding: '0 14px', borderBottom: '0.5px solid #313131', fontSize: 15 }}>
+      <span style={{ flex: 1 }}>share</span>
+      <span style={{ display: 'flex', gap: 6, alignItems: 'center', fontSize: 12, color: '#909090' }}>Ask Circleback <Kbd>Tab</Kbd></span>
+    </div>
+    <div style={{ padding: 6 }}>
+      <Label>This meeting</Label>
+      <MockMenu width="100%" radius={0} pad={0} border="none" itemHeight={36} itemRadius={8} items={[{ label: 'Share this meeting', kbd: ['S'], active: true }, { label: 'Copy share link', kbd: ['⇧', '⌘', 'C'] }]} />
+      <Label>Settings</Label>
+      <MockMenu width="100%" radius={0} pad={0} border="none" itemHeight={36} itemRadius={8} items={[{ label: 'Settings › Sharing defaults' }]} />
+      <Label>Growth</Label>
+      <MockMenu width="100%" radius={0} pad={0} border="none" itemHeight={36} itemRadius={8} items={[{ label: 'Copy referral link' }]} />
+    </div>
+  </div>
+</Story>

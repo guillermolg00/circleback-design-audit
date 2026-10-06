@@ -1,45 +1,26 @@
-# .
+# Circleback · Design audit
 
-This is a Next.js application generated with
-[Create Fumadocs](https://github.com/fuma-nama/fumadocs).
+Design-system-style documentation of a visual consistency and user experience audit of the Circleback web app. Built with Next.js, MDX and Fumadocs, in Circleback's own visual language: dark mode, Plus Jakarta Sans for headings, the official wordmark, the brand orange (`#F24E1D`) for the documentation chrome, and the palette and radii measured in the app.
 
-Run development server:
+## Run
 
 ```bash
-npm run dev
-# or
+pnpm install
 pnpm dev
-# or
-yarn dev
 ```
 
-Open http://localhost:3000 with your browser to see the result.
+Open http://localhost:3000. The documentation lives under `/docs`.
 
-## Explore
+## Structure
 
-In the project, you can see:
+- `content/docs/` — MDX pages: Overview, Method, Foundations, Components, User experience, Proposal and Appendix. Each folder has a `meta.json` with the page order.
+- `components/doc/` — documentation blocks (`Figure`, `Compare`, `Measures`, `Finding`, `Story`, `Scale`) and live replicas of Circleback's components (`MockRow`, `MockMenu`, `Kbd`, `MockButton`, `MockChip`, `MockCard`, …) used to show the current state and the proposal with the same tokens.
+- `public/img/` — 34 annotated screenshots of the app (personal data blurred).
+- `public/brand/` — the official Circleback wordmark (from circleback.ai) and the "C." mark.
+- `app/global.css` — theme: Fumadocs variables overridden with Circleback's palette, plus the styles for the blocks.
 
-- `lib/source.ts`: Code for content source adapter, [`loader()`](https://fumadocs.dev/docs/headless/source-api) provides the interface to access your content.
-- `lib/layout.shared.tsx`: Shared options for layouts, optional but preferred to keep.
+## Scripts
 
-| Route                     | Description                                            |
-| ------------------------- | ------------------------------------------------------ |
-| `app/(home)`              | The route group for your landing page and other pages. |
-| `app/docs`                | The documentation layout and pages.                    |
-| `app/api/search/route.ts` | The Route Handler for search.                          |
-
-### Fumadocs MDX
-
-Collections are defined with the [Macro API](https://fumadocs.dev/docs/mdx/macro) in `lib/source.ts`.
-
-Read the [Introduction](https://fumadocs.dev/docs/mdx) for further details.
-
-## Learn More
-
-To learn more about Next.js and Fumadocs, take a look at the following
-resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js
-  features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-- [Fumadocs](https://fumadocs.dev) - learn about Fumadocs
+- `pnpm dev` — development server.
+- `pnpm build` — production build (every page is prerendered).
+- `pnpm types:check` — Next route types and `tsc`.

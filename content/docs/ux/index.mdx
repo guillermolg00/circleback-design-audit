@@ -1,0 +1,34 @@
+---
+title: Findings
+description: Ten user experience findings, each with priority, evidence, a Linear reference, and a proposal.
+---
+
+Each finding covers its priority, what happens, why it matters, the Linear reference where it applies, and a concrete proposal. Screenshots can be enlarged.
+
+<Measures
+  head={['Finding', 'Priority']}
+  rows={[
+    { label: <><span style={{ display: 'inline-block', minWidth: 24, color: '#6a6a6a', fontVariantNumeric: 'tabular-nums' }}>1</span><a href="/docs/ux/errors">Recording errors are a dead end</a></>, values: ['High'], flags: ['bad'] },
+    { label: <><span style={{ display: 'inline-block', minWidth: 24, color: '#6a6a6a', fontVariantNumeric: 'tabular-nums' }}>2</span><a href="/docs/ux/menus">The same object has three different menus</a></>, values: ['High'], flags: ['bad'] },
+    { label: <><span style={{ display: 'inline-block', minWidth: 24, color: '#6a6a6a', fontVariantNumeric: 'tabular-nums' }}>3</span><a href="/docs/ux/contextual-palette">The command palette (⌘K) doesn’t know where you are</a></>, values: ['High'], flags: ['bad'] },
+    { label: <><span style={{ display: 'inline-block', minWidth: 24, color: '#6a6a6a', fontVariantNumeric: 'tabular-nums' }}>4</span><a href="/docs/ux/shared-meetings">Features disappear in shared meetings</a></>, values: ['High'], flags: ['bad'] },
+    { label: <><span style={{ display: 'inline-block', minWidth: 24, color: '#6a6a6a', fontVariantNumeric: 'tabular-nums' }}>5</span><a href="/docs/ux/keyboard">The keyboard only half works</a></>, values: ['Medium'], flags: ['warn'] },
+    { label: <><span style={{ display: 'inline-block', minWidth: 24, color: '#6a6a6a', fontVariantNumeric: 'tabular-nums' }}>6</span><a href="/docs/ux/filters">Active filters are invisible</a></>, values: ['Medium'], flags: ['warn'] },
+    { label: <><span style={{ display: 'inline-block', minWidth: 24, color: '#6a6a6a', fontVariantNumeric: 'tabular-nums' }}>7</span><a href="/docs/ux/layout">The layout doesn’t give up space at medium widths</a></>, values: ['Medium'], flags: ['warn'] },
+    { label: <><span style={{ display: 'inline-block', minWidth: 24, color: '#6a6a6a', fontVariantNumeric: 'tabular-nums' }}>8</span><a href="/docs/ux/upsell">Too much upsell at once</a></>, values: ['Medium'], flags: ['warn'] },
+    { label: <><span style={{ display: 'inline-block', minWidth: 24, color: '#6a6a6a', fontVariantNumeric: 'tabular-nums' }}>9</span><a href="/docs/ux/home-and-action-items">Home and action items are hard to act on</a></>, values: ['Medium'], flags: ['warn'] },
+    { label: <><span style={{ display: 'inline-block', minWidth: 24, color: '#6a6a6a', fontVariantNumeric: 'tabular-nums' }}>10</span><a href="/docs/ux/naming-and-accessibility">Naming, empty states, and accessibility</a></>, values: ['Low'] },
+  ]}
+/>
+
+## What already works well
+
+Before the findings, here is what is worth keeping:
+
+- ⌘K with Tab to hand off to the AI, plus navigation to any Settings section.
+- Shortcuts panel (⌘/) with a search field.
+- Selection bar with actions for multi-select, and right-click on rows.
+- Filters with a search field, and a well-organized Settings.
+- People as a list with the detail alongside, navigable with J/K.
+- The “New meeting” menu explains each option.
+- Tooltips show the shortcut (Filter → F).

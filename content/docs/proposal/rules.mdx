@@ -1,0 +1,30 @@
+---
+title: Component rules
+description: One rule per component, and what changes from today.
+---
+
+<Measures
+  head={['Component', 'Rule', 'What changes']}
+  rows={[
+    { label: <a href="/docs/components/page-header">Page header</a>, values: ['Title 24/32 · fixed 32px header row · 16px to the first block · horizontal padding 64', 'Home (29), Settings (27), and the meeting detail (12) move to 16; Filter sits at the same height in every list'] },
+    { label: <a href="/docs/components/list-row">List row</a>, values: ['56px for two lines and 36px for one · hover bleeds 8px per side with radius 12 · avatar 32, 12px from the text · 0px between title and meta', 'Meetings stops bleeding 34px; Action Items goes from 26+8 to 36'] },
+    { label: <a href="/docs/components/checkbox">Checkbox</a>, values: ['16px · radius 4 (circle only for tasks) · 1px strong border', 'Removes #4B4B4B, #6A6A6A, and the 1.5px border'] },
+    { label: <a href="/docs/components/menu">Menu and popover</a>, values: ['Radius 12 · padding 4 · 0.5px subtle border · 32px item with radius 8 · icon 16, 8px from the text · shortcut on the right', 'Unifies “…”, right-click, account, Filter, and New meeting (with description: 48px)'] },
+    { label: <a href="/docs/components/palette-and-dialogs">Command palette and dialogs</a>, values: ['Radius 16 · 0.5px border · 36px item with radius 8 · icon 8px from the text', '⌘K, shortcuts panel, and Share drop radius 15 and items at 40'] },
+    { label: <a href="/docs/components/shortcut-key">Shortcut key</a>, values: ['20px · radius 4 · 1px strong border · 11px mono', 'One style across tooltip, ⌘K, menus, and panel'] },
+    { label: <a href="/docs/components/search-field">Search field</a>, values: ['32px · radius 8 · input background · no border; inside an overlay, no background and a divider', 'Transcript and shortcuts panel share a background'] },
+    { label: <a href="/docs/components/button">Button</a>, values: ['Primary, secondary, and ghost at md (32) or sm (28) · radius 8 · pill only for chips and tabs', 'New meeting (31/r10), Settings (30), trial (37), and Add (24) move to md or sm'] },
+    { label: <a href="/docs/components/chip">Chip and tab</a>, values: ['28px with a 1px strong border, or 24px with no border for people · 13px', 'Tabs go from 31 to 28; active filters show as chips'] },
+    { label: <a href="/docs/components/card">Card</a>, values: ['Radius 12 · padding 16 · 0.5px subtle border · nested with no border and radius 8', 'Promo, explainer, and nested cards align'] },
+    { label: <a href="/docs/components/sidebar">Sidebar</a>, values: ['Items at 32 with radius 8 · icons at 16 · 2px between items · 16 between groups', 'New meeting and trial become md buttons; icons move to 16'] },
+    { label: <a href="/docs/components/settings">Settings</a>, values: ['Label 15/22 600 (section) + optional description 13/450 · 12px to the card · 40px between sections · rows at 56, content centered, 20px side padding · text 14/12', 'A single template; Emails, Sharing, and Tags gain a label'] },
+    { label: <a href="/docs/components/empty-state">Empty state</a>, values: ['Icon 20, title 18/24, one line, one CTA, and one template · 40px below the header, aligned to the column', 'No duplicate CTA and no redundant explainer card'] },
+    { label: <a href="/docs/components/notes-and-transcript">Notes and transcript</a>, values: ['15/24 in Notes and Transcript · heading 15/600 · 8px from heading to text · 12px between bullets · 32px between sections', 'Transcript drops the 2.0 line height; bullets stay grouped under their heading'] },
+  ]}
+/>
+
+## How to maintain it
+
+- A component inventory with its allowed variants, in the repository, next to the theme.
+- An automated CI check that flags off-scale radii, heights, and colors. This audit’s measurement script (getComputedStyle on the rendered app) is a starting point.
+- A review rule: a new value requires a new token, and a new token requires a written reason.

@@ -1,0 +1,34 @@
+---
+title: Naming and accessibility
+description: Small details that add up to noise.
+---
+
+<Sev level="low" />
+
+<Finding>
+  <What>
+    **Naming.** The same section is called “Ask” in the sidebar, “Assistant” in the browser tab and the URL, and “Ask Circleback” in the title. “Action Items” is in Title Case next to “New action item” in sentence case. “Spaces” groups People and Companies, which aren’t spaces.
+
+    **Empty states.** An explanatory card, an empty block, and two CTAs that say the same thing (see [Empty state](/docs/components/empty-state)). Example templates are missing.
+
+    **Accessibility.** Between 3 and 6 icon buttons per screen have no accessible name: the workspace chevron, the right panel toggle, and card close buttons.
+  </What>
+  <Linear>
+    One name per concept across the whole interface. The icon buttons we checked have labels (“Add filter”, “Display options”, “Open details”).
+  </Linear>
+  <Proposal>
+    A naming glossary (Ask, Action items, Contacts) applied to the sidebar, titles, tabs, and URLs. Sentence case across the whole interface. An `aria-label` on every icon button, with the same text as its tooltip.
+  </Proposal>
+</Finding>
+
+## Proposed glossary
+
+<Measures
+  head={['Concept', 'Current', 'Proposed']}
+  rows={[
+    { label: 'Assistant', values: ['Ask · Assistant · Ask Circleback', 'Ask (sidebar, title, tab, URL /ask)'], flags: ['bad'] },
+    { label: 'Tasks', values: ['Action Items · action item', 'Action items'], flags: ['bad'] },
+    { label: 'People and Companies group', values: ['Spaces', 'Contacts'], flags: ['bad'] },
+    { label: 'Removing a meeting', values: ['Delete · Remove', 'Delete (owned) · Remove from my meetings (shared)'], flags: ['bad'] },
+  ]}
+/>

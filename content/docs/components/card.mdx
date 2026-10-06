@@ -1,0 +1,51 @@
+---
+title: Card
+description: The right-panel card is the right baseline; the others drift in border, padding, or radius.
+---
+
+## Current
+
+<Figure eager
+  src="/img/u08-upsell-cards.jpg"
+  alt="Home with three different cards annotated"
+  width={799}
+  height={541}
+  caption={<>Home mixes three cards: the right-panel card (0.5px #313131, padding 16), a borderless nested card with radius 7 and padding 12, and the sidebar promo (1px #3E3E3E, padding 16/12).</>}
+/>
+
+<Measures
+  head={['Card', 'Radius', 'Padding', 'Border']}
+  rows={[
+    { label: 'Right panel (Details, People, Recent conversations)', values: ['12', '16', '0.5px #313131'], flags: ['good', 'good', 'good'] },
+    { label: 'Sidebar promo (“Better together”)', values: ['12', '16 / 12', '1px #3E3E3E'], flags: [undefined, 'bad', 'bad'] },
+    { label: 'Nested (“See email conversations”)', values: ['7', '12', 'none'], flags: ['bad'] },
+    { label: 'Automations and Insights explainer', values: ['7', '32', '1px #3E3E3E'], flags: ['bad', 'bad', 'bad'] },
+    { label: 'Settings', values: ['12', '0 (rows 11 / 19)', '0.5px #313131'], flags: [undefined, 'bad'] },
+    { label: 'Ask bar', values: ['16', '8', '0.5px transparent'], flags: ['bad'] },
+  ]}
+/>
+
+<Story title="Cards in use" kind="current">
+  <div className="cb-m" style={{ display: 'flex', gap: 16, flexWrap: 'wrap', alignItems: 'flex-start' }}>
+    <MockCard title="People" text="Two participants" />
+    <MockCard title="Better together" text="Share meetings and more with your team." radius={12} pad="16px 12px" border="1px solid #3e3e3e" width={220} />
+    <MockCard title="See email conversations" text="Connect your email to see recent email conversations here." radius={7} pad="12px" border="none" background="#232323" width={240} />
+    <MockCard title="What are automations?" text="Automations can perform actions after specific meetings." radius={7} pad="32px" border="1px solid #3e3e3e" width={300} />
+  </div>
+</Story>
+
+## Proposal
+
+<Story title="Card" kind="proposed" note="Radius 12, padding 16, subtle 0.5px border. A nested card has no border and uses radius 8 on a raised background.">
+  <div className="cb-m" style={{ display: 'flex', gap: 16, flexWrap: 'wrap', alignItems: 'flex-start' }}>
+    <MockCard title="People" text="Two participants" />
+    <MockCard title="Better together" text="Share meetings and more with your team." width={220} />
+    <MockCard title="Recent conversations" width={264}>
+      <MockCard title="See email conversations" text="Connect your email to see them here." radius={8} pad="12px" border="none" background="#232323" width="100%" />
+    </MockCard>
+  </div>
+</Story>
+
+<Finding>
+  <Rule>A card is md with a subtle border and padding 16. The promo, explainer, and nested cards stop being exceptions. The Automations and Insights explainer card goes away as such: its copy moves into the empty state (see [Empty state](/docs/components/empty-state)).</Rule>
+</Finding>

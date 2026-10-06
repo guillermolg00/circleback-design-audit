@@ -1,0 +1,61 @@
+---
+title: "Borders and color"
+description: "Three widths and four border grays, and a proposal for two tokens."
+---
+
+## Current
+
+<Measures
+  head={['Border', 'Where it appears']}
+  rows={[
+    { label: '0.5px #313131', values: ['Right-panel cards, Settings cards, Settings dividers, Ask bar (transparent)'] },
+    { label: '0.5px #3E3E3E', values: ['New meeting button, dividers in the first Calendar card'], flags: ['bad'] },
+    { label: '1px #3E3E3E', values: ['Every popover, sidebar promo card, Automations explainer card, selection bar'] },
+    { label: '1px #313131', values: ['Date and tag chips, All / Mine tabs, bottom border of the Notes / Transcript tabs'] },
+    { label: '1px #4B4B4B', values: ['Meetings checkbox, selection bar dividers'], flags: ['bad'] },
+    { label: '1px #6A6A6A', values: ['Action items round checkbox'], flags: ['bad'] },
+    { label: '1.5px #4B4B4B', values: ['Share dialog checkbox'], flags: ['bad'] },
+  ]}
+/>
+
+<Figure eager
+  src="/img/f12-settings-calendar.jpg"
+  alt="Settings Calendar with two cards: #3E3E3E dividers in the first and #313131 in the second"
+  width={799}
+  height={590}
+  caption={<>In <b>Calendar</b>, the first card uses #3E3E3E dividers and the second #313131, on the same page.</>}
+/>
+
+## Proposal
+
+<Story title="Border tokens" kind="proposed" note="Two tokens. Surfaces (cards, popovers, dividers) use subtle at 0.5px. Outlined controls (chips, checkboxes, outline buttons) use strong at 1px.">
+  <ColorDots
+    items={[
+      { hex: '#313131', label: 'subtle · 0.5px · surfaces and dividers' },
+      { hex: '#3E3E3E', label: 'strong · 1px · controls' },
+      { hex: '#4B4B4B', label: '→ strong', drop: true },
+      { hex: '#6A6A6A', label: '→ strong', drop: true },
+    ]}
+  />
+</Story>
+
+## Colors to keep
+
+These colors already work well, and this documentation uses them as is.
+
+<Story title="Surfaces and accents" kind="current">
+  <ColorDots
+    items={[
+      { hex: '#1A1A1A', label: 'background' },
+      { hex: '#1D1D1D', label: 'panel · popover' },
+      { hex: '#232323', label: 'raised · row hover' },
+      { hex: '#2A2A2A', label: 'item hover · input' },
+      { hex: '#4262FF', label: 'accent' },
+      { hex: '#EB584B', label: 'danger' },
+    ]}
+  />
+</Story>
+
+<Finding>
+  <Rule>Function sets the width, not the screen: 0.5px to separate surfaces, 1px to outline controls. A popover is a surface, so it goes from 1px to 0.5px plus a shadow.</Rule>
+</Finding>
